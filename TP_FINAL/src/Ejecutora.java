@@ -1,26 +1,28 @@
 import java.util.Scanner;
 
 public class Ejecutora {
-	
+
 	private Scanner input = new Scanner(System.in);
-	
+	private Empresa e = new Empresa();
+
 	private void mostrarOpciones() {
 		System.out.println("Ingrese una opción:");
-		System.out.println("Opcion 1 - ");
+		System.out.println("Opcion 1 - Mostrar empleados ");
 		System.out.println("Opcion 2 - ");
 		System.out.println("Opcion 3 - ");
 		System.out.println("Opcion 4 - ");
 		System.out.println("Opcion 0 - Salir");
 	}
-	
+
 	private void menu() {
 		int opcion = 0;
 		do {
 			mostrarOpciones();
 			opcion = input.nextInt();
 			input.nextLine();
-			switch(opcion) {
+			switch (opcion) {
 				case 1:
+					e.mostrarEmpleados();
 					break;
 				case 2:
 					break;
@@ -35,9 +37,9 @@ public class Ejecutora {
 					System.out.println("Ingrese una opción valida");
 					break;
 			}
-		}while(opcion != 0);
+		} while (opcion != 0);
 	}
-	
+
 	public static void main(String[] args) {
 		Ejecutora ejecutora = new Ejecutora();
 		ejecutora.menu();

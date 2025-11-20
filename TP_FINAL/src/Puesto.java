@@ -5,9 +5,9 @@ public abstract class Puesto {
 	private String descripcion;
 	private Hashtable<Conocimiento, Integer> requerimientos;
 
-	public Puesto(String descripcion, int puestosDisponibles) {
+	public Puesto(String descripcion, Hashtable<Conocimiento, Integer> requerimientos) {
 		this.descripcion = descripcion;
-		this.requerimientos = new Hashtable<>();
+		this.requerimientos = requerimientos;
 	}
 
 	public String getDescripcion() {
@@ -18,7 +18,7 @@ public abstract class Puesto {
 		return this.descripcion.equals(descripcion);
 	}
 
-	public abstract void mostrarDatos();
+	public abstract void imprimirDatos();
 
 	public abstract boolean sosJerarquico();
 

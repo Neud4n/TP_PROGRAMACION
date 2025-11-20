@@ -11,13 +11,12 @@ public class Empresa {
 	private Scanner input;
 
 	public Empresa() {
+
 		this.puestos = new ArrayList<>();
 		this.empleados = new ArrayList<>();
 		this.convocatorias = new ArrayList<>();
 		this.conocimientos = new ArrayList<>();
 		this.input = new Scanner(System.in);
-
-		// Pre-cargar Empleados, Conocimientos, Convocatorias y Puestos.
 
 		// Pre-carga de conocimientos
 		Conocimiento gcp = new Conocimiento("GCP");
@@ -30,6 +29,10 @@ public class Empresa {
 		this.conocimientos.add(gcp);
 		this.conocimientos.add(terraform);
 		this.conocimientos.add(devops);
+		this.conocimientos.add(html);
+		this.conocimientos.add(javascript);
+		this.conocimientos.add(css);
+		this.conocimientos.add(linux);
 		// Pre-carga de HT
 		Hashtable<Conocimiento, Integer> requerimientosCloudEngineer = new Hashtable<>();
 		requerimientosCloudEngineer.put(gcp, 2);
@@ -41,8 +44,8 @@ public class Empresa {
 		requerimientosFrontEndDeveloper.put(javascript, 3);
 		requerimientosFrontEndDeveloper.put(css, 1);
 		// Pre-carga de Puestos
-		Puesto cloudEngineer = new PuestoNoJerarquico("Cloud Engineer", 1);
-		Puesto frontEndDeveloper = new PuestoNoJerarquico("FrontEnd Developer", 2);
+		Puesto cloudEngineer = new PuestoNoJerarquico("Cloud Engineer", requerimientosCloudEngineer);
+		Puesto frontEndDeveloper = new PuestoNoJerarquico("FrontEnd Developer", requerimientosFrontEndDeveloper);
 		this.puestos.add(frontEndDeveloper);
 		this.puestos.add(cloudEngineer);
 		// Pre-carga de Empleados
@@ -131,22 +134,35 @@ public class Empresa {
 		String nombre = input.nextLine();
 		System.out.println("Ingrese el apellido");
 		String apellido = input.nextLine();
+		int antiguedad;
+
+		do {
+			System.out.println("Cuántos años lleva en la empresa?");
+			antiguedad = input.nextInt();
+			input.nextLine();
+			if (antiguedad <= 0) {
+				System.out.println("Error: Debe ser un número positivo.");
+			}
+		} while (antiguedad <= 0);
 
 		Hashtable<Conocimiento, Integer> skills = new Hashtable<>();
 		String des = "";
 		Integer experiencia = null;
 		do {
-			System.out.println("Ingrese el conocimiento");
+			System.out.println("Ingrese una habilidad dura del empleado");
 			des = input.nextLine();
 			Conocimiento key = this.getConocimiento(des);
-			if (!skills.containsKey(key)) {
+
+			if (key == null) {
+				System.out.println("La habilidad ingresada no existe en el sistema.");
+			} else if (!skills.containsKey(key)) {
 				do {
-					System.out.println("Ingrese los años de experiencia en :" + des);
+					System.out.println("Ingrese los años de experiencia en: " + des);
 					experiencia = input.nextInt();
-				} while (experiencia > 0);
+				} while (experiencia <= 0);
 				skills.put(key, experiencia);
 			} else {
-				System.out.println("La habilidad, ya existe.");
+				System.out.println("El empleado ya tiene registrada esa habilidad.");
 			}
 		} while (this.salir());
 
@@ -161,23 +177,16 @@ public class Empresa {
 				System.out.println("Error: Ingreso un número incorrecto.");
 			}
 		} while (resp != 1 && resp != 2);
+
 		switch (resp) {
 			case 1:
-
+				this.empleados.add(new EmpleadoJerarquico(dni, nombre, apellido, skills, antiguedad));
 				break;
 			case 2:
-				break;
-			default:
+				this.empleados.add(new EmpleadoNoJerarquico(dni, nombre, apellido, antiguedad, skills));
 				break;
 		}
-		// Completar.
-		// 1. Carga de datos (DNI, Nombre, Apellido) | Hecho.- Dan
-		// 2. Carga de habilidades | Hecho.- Dan
-		// 3. Preguntar: Jerarquico o NoJerarquico.
-		// 4. Instanciar el Empleado
-		// 5. Validar si el empleado puede tomar ese puesto con el método
-		// instanciaPuesto.tomarEmpleado(Empleado)
-		// 5. Carga de puesto.
+
 	}
 
 	// Caso de uso 2: Dar de alta un puesto
@@ -208,7 +217,35 @@ public class Empresa {
 
 	// Caso de uso 7: Mostrar puestos jerarquicos y no jerarquicos.
 	public void mostrarPuestos() {
-		// Completar.
+		int countJerarquicos = 0;
+		int countNoJerarquicos = 0;
+		System.out.println("=====================");
+		System.out.println("Puestos Jerarquicos");
+		System.out.println("=====================");
+		for (Puesto p : puestos) {
+			if (p.sosJerarquico()) {
+				countJerarquicos++;
+				p.imprimirDatos();
+			}
+		}
+
+		if (countJerarquicos == 0) {
+			System.out.println("No hay puestos jerarquicos.");
+		}
+
+		System.out.println("=====================");
+		System.out.println("Puestos No Jerarquicos");
+		System.out.println("=====================");
+		for (Puesto p : puestos) {
+			if (!p.sosJerarquico()) {
+				countNoJerarquicos++;
+				p.imprimirDatos();
+			}
+		}
+
+		if (countNoJerarquicos == 0) {
+			System.out.println("No hay empleados no jerarquicos.");
+		}
 	}
 
 	// Caso de uso 8: Mostra convocatorias.

@@ -6,8 +6,8 @@ public final class EmpleadoJerarquico extends Empleado {
 	private int antiguedadEnCargoActual;
 
 	public EmpleadoJerarquico(int dni, String nombre, String apellido,
-			Hashtable<Conocimiento, Integer> skills) {
-		super(dni, nombre, apellido, skills);
+			Hashtable<Conocimiento, Integer> skills, int antiguedadEnEmpresa) {
+		super(dni, nombre, apellido, skills, antiguedadEnEmpresa);
 		this.antiguedadEnCargoActual = 0;
 	}
 

@@ -8,11 +8,12 @@ public abstract class Empleado {
 	private Hashtable<Conocimiento, Integer> skills;
 	private Puesto puesto;
 
-	public Empleado(int dni, String nombre, String apellido, Hashtable<Conocimiento, Integer> skills) {
+	public Empleado(int dni, String nombre, String apellido, Hashtable<Conocimiento, Integer> skills,
+			int antiguedadEnEmpresa) {
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
-		this.antiguedadEnEmpresa = 0;
+		this.antiguedadEnEmpresa = antiguedadEnEmpresa;
 		this.skills = skills;
 		this.puesto = null;
 	}
@@ -23,6 +24,18 @@ public abstract class Empleado {
 
 	public int getAntiguedadEmpresa() {
 		return this.antiguedadEnEmpresa;
+	}
+
+	public int getDni() {
+		return this.dni;
+	}
+
+	public String getNombre() {
+		return this.nombre;
+	}
+
+	public String getApellido() {
+		return this.apellido;
 	}
 
 	public abstract boolean sosJerarquico();

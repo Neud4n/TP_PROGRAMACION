@@ -21,7 +21,27 @@ public class PuestoJerarquico extends Puesto {
 
 	@Override
 	public boolean tomarEmpleado(Empleado e) {
-		//
+		if (!e.sosJerarquico()) {
+			System.out.println("El empleado no es jerárquico.");
+			return false;
+		}
+		if (this.empleado != null) {
+			System.out.println("El puesto ya tiene un empleado asignado.");
+			return false;
+		}
+		if (e.getAntiguedad() < PuestoJerarquico.antiguedad_minima_requerida) {
+			System.out.println("El empleado no cumple con la antiguedad mínima requerida.");
+			return false;
+		}
+		if (!this.cumpleRequisitos(e)) {
+			return false;
+		}
+		if (!e.validacionAntiguedadCargo()) {
+			System.out.println("El empleado no cumple con la antiguedad mínima requerida en su cargo actual.");
+			return false;
+		}
+		this.empleado = (EmpleadoJerarquico) e;
+		this.empleado.setPuesto(this);
 		return true;
 	}
 

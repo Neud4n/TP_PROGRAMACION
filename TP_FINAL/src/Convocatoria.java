@@ -38,7 +38,7 @@ public class Convocatoria {
 		this.finConvocatoria = LocalDate.now();
 	}
 
-	public void agregarAspirante() {
+	public void agregarAspirante(Empleado e) {
 		// Completar
 	}
 
@@ -48,7 +48,7 @@ public class Convocatoria {
 			System.out.println("No hay aspirantes para seleccionar");
 		}
 
-		// 1. Validar que hayan aspirantes.
+		// 1. Validar que hayan aspirantes. -- Hecho.
 		// 2. Permitirte elegir un aspirante.
 		// 3. Asignarle el puesto al aspirante.
 		// 4. Al puesto asignarle el aspirante.

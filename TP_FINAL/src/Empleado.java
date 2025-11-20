@@ -18,6 +18,10 @@ public abstract class Empleado {
 		this.puesto = null;
 	}
 
+	public int getAntiguedad() {
+		return this.antiguedadEnEmpresa;
+	}
+
 	public boolean comparoDni(int dni) {
 		return this.dni == dni;
 	}

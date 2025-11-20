@@ -50,10 +50,10 @@ public class Empresa {
 		this.puestos.add(cloudEngineer);
 		// Pre-carga de Empleados
 		Empleado dan = new EmpleadoNoJerarquico(42, "Dan", "Zabala", 3, requerimientosCloudEngineer);
-		dan.setPuesto(cloudEngineer);
+		cloudEngineer.tomarEmpleado(dan);
 		this.empleados.add(dan);
 		Empleado aye = new EmpleadoNoJerarquico(43, "Ayelen", "Victorino", 1, requerimientosFrontEndDeveloper);
-		aye.setPuesto(frontEndDeveloper);
+		frontEndDeveloper.tomarEmpleado(aye);
 		this.empleados.add(aye);
 	}
 
@@ -201,13 +201,48 @@ public class Empresa {
 
 	// Caso de uso 4: Alta de conocimientos
 	public void altaConocimientos() {
-		// eaaaaaaaaaaaaa
-		// Completar.
+		String descripcion;
+		Conocimiento aux;
+		do {
+			System.out.println("Ingrese la descripcion del conocimiento");
+			descripcion = input.nextLine();
+			aux = this.getConocimiento(descripcion);
+			if (aux != null) {
+				System.out.println("El conocimiento ya existe en el sistema.");
+			}
+		} while (aux != null);
+		Conocimiento conocimiento = new Conocimiento(descripcion);
+		this.conocimientos.add(conocimiento);
 	}
 
 	// Caso de uso 5: Agregar conocimiento empleado
 	public void agregarSkillEmpleado() {
-		// Completar.
+		int dni;
+		String descripcion;
+		Integer experiencia;
+		Conocimiento aux;
+		Empleado e;
+		do {
+			System.out.println("Ingrese el DNI del empleado");
+			dni = input.nextInt();
+			e = this.getEmpleado(dni);
+			if (e == null) {
+				System.out.println("El DNI ingresado no existe.");
+			}
+		} while (e == null);
+		input.nextLine();
+		System.out.println("Ingrese la descripcion del conocimiento");
+		do {
+			descripcion = input.nextLine();
+			aux = this.getConocimiento(descripcion);
+			if (aux == null) {
+				System.out.println("El conocimiento ingresado no existe en el sistema.");
+			}
+		} while (aux == null);
+		System.out.println("Ingrese los años de experiencia en: " + descripcion);
+		experiencia = input.nextInt();
+		input.nextLine();
+		e.getSkills().put(aux, experiencia);
 	}
 
 	// Caso de uso 6: Agregar requerimiento puesto

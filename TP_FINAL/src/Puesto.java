@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Hashtable;
 
 public abstract class Puesto {
@@ -14,8 +13,30 @@ public abstract class Puesto {
 		return this.descripcion;
 	}
 
+	public Hashtable<Conocimiento, Integer> getRequerimientos() {
+		return this.requerimientos;
+	}
+
 	public boolean comparoDescripcion(String descripcion) {
 		return this.descripcion.equals(descripcion);
+	}
+
+	public boolean cumpleRequisitos(Empleado e) {
+
+		if (e.getSkills() == null) {
+			System.out.println("El empleado no tiene habilidades registradas.");
+			return false;
+		}
+
+		for (Conocimiento skillReq : this.requerimientos.keySet()) {
+			int nivelRequerido = this.requerimientos.get(skillReq);
+
+			if (!e.getSkills().containsKey(skillReq) || e.getSkills().get(skillReq) < nivelRequerido) {
+				System.out.println("El empleado no cumple con los requisitos."); // + skillReq.getDescripcion());
+				return false;
+			}
+		}
+		return true;
 	}
 
 	public abstract void imprimirDatos();

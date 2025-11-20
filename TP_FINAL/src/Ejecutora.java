@@ -6,25 +6,39 @@ public class Ejecutora {
 	private Empresa e = new Empresa();
 
 	private void mostrarOpcionesEmpleado() {
-		System.out.println("Opcion 1 - Alta Empleado");
-		System.out.println("Opcion 2 - Mostrar Ficha Empleado");
-		System.out.println("Opcion 3 - Mostrar Ficha Empleados");
-		System.out.println("Opcion 0 - Volver al menú principal");
+		System.out.println("========================================");
+		System.out.println("          GESTIÓN DE EMPLEADOS          ");
+		System.out.println("========================================");
+		System.out.println("   1. Alta Empleado");
+		System.out.println("   2. Mostrar Ficha Empleado");
+		System.out.println("   3. Mostrar Ficha Empleados");
+		System.out.println("   0. Volver al menú principal");
+		System.out.println("========================================");
+		System.out.print("Ingrese una opción: ");
 	}
 
 	private void mostrarOpcionesPuesto() {
-		System.out.println("Opcion 1 - Alta Puesto");
-		System.out.println("Opcion 2 - Mostrar Puesto");
-		System.out.println("Opcion 3 - Mostrar Puestos");
-		System.out.println("Opcion 0 - Volver al menú principal");
+		System.out.println("========================================");
+		System.out.println("           GESTIÓN DE PUESTOS           ");
+		System.out.println("========================================");
+		System.out.println("   1. Alta Puesto");
+		System.out.println("   2. Mostrar Puesto");
+		System.out.println("   3. Mostrar Puestos");
+		System.out.println("   0. Volver al menú principal");
+		System.out.println("========================================");
+		System.out.print("Ingrese una opción: ");
 	}
 
 	private void mostrarOpciones() {
-		System.out.println("Ingrese una opción:");
-		System.out.println("Opcion 1 - Menú Empleados");
-		System.out.println("Opcion 2 - Menú Puestos");
-		System.out.println("Opcion 3 - Menú Convocatorias");
-		System.out.println("Opcion 0 - Salir");
+		System.out.println("\n========================================");
+		System.out.println("           SISTEMA DE GESTIÓN           ");
+		System.out.println("========================================");
+		System.out.println("   1. Menú Empleados");
+		System.out.println("   2. Menú Puestos");
+		System.out.println("   3. Menú Convocatorias");
+		System.out.println("   0. Salir");
+		System.out.println("========================================");
+		System.out.print("Ingrese una opción: ");
 	}
 
 	private void menuEmpleados() {

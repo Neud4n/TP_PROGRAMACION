@@ -17,7 +17,15 @@ public class PuestoNoJerarquico extends Puesto {
 
 	@Override
 	public boolean tomarEmpleado(Empleado e) {
-		// Completar
+		if (e.sosJerarquico()) {
+			System.out.println("El empleado es jerárquico, no puede tomar un puesto no jerárquico.");
+			return false;
+		}
+		if (!this.cumpleRequisitos(e)) {
+			return false;
+		}
+		this.empleados.add((EmpleadoNoJerarquico) e);
+		e.setPuesto(this);
 		return true;
 	}
 

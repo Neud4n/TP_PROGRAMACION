@@ -192,6 +192,7 @@ public class Empresa {
 
 	// Caso de uso 4: Alta de conocimientos
 	public void altaConocimientos() {
+		// eaaaaaaaaaaaaa
 		// Completar.
 	}
 

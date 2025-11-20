@@ -29,6 +29,18 @@ public class Ejecutora {
 		System.out.print("Ingrese una opción: ");
 	}
 
+	private void mostrarOpcionesHabilidad() {
+		System.out.println("========================================");
+		System.out.println("           GESTIÓN DE HABILIDADES       ");
+		System.out.println("========================================");
+		System.out.println("   1. Alta Habilidad");
+		System.out.println("   2. Mostrar Habilidades");
+		System.out.println("   3. Baja Habilidad");
+		System.out.println("   0. Volver al menú principal");
+		System.out.println("========================================");
+		System.out.print("Ingrese una opción: ");
+	}
+
 	private void mostrarOpciones() {
 		System.out.println("\n========================================");
 		System.out.println("           SISTEMA DE GESTIÓN           ");
@@ -36,6 +48,7 @@ public class Ejecutora {
 		System.out.println("   1. Menú Empleados");
 		System.out.println("   2. Menú Puestos");
 		System.out.println("   3. Menú Convocatorias");
+		System.out.println("   4. Menú Habilidades");
 		System.out.println("   0. Salir");
 		System.out.println("========================================");
 		System.out.print("Ingrese una opción: ");
@@ -91,6 +104,66 @@ public class Ejecutora {
 		} while (opcion != 0);
 	}
 
+	private void menuConvocatorias() {
+		int opcion = 0;
+		do {
+			this.mostrarOpcionesConvocatoria();
+			opcion = input.nextInt();
+			input.nextLine();
+			switch (opcion) {
+				case 1:
+					e.altaConvocatoria();
+					break;
+				case 2:
+					e.mostrarConvocatorias();
+					break;
+				case 0:
+					System.out.println("Volviendo al menú principal...");
+					break;
+				default:
+					System.out.println("Ingrese una opción valida");
+					break;
+			}
+		} while (opcion != 0);
+	}
+
+	private void mostrarOpcionesConvocatoria() {
+		System.out.println("========================================");
+		System.out.println("           GESTIÓN DE CONVOCATORIAS       ");
+		System.out.println("========================================");
+		System.out.println("   1. Alta Convocatoria");
+		System.out.println("   2. Mostrar Convocatorias");
+		System.out.println("   0. Volver al menú principal");
+		System.out.println("========================================");
+		System.out.print("Ingrese una opción: ");
+	}
+
+	private void menuConocimientos() {
+		int opcion = 0;
+		do {
+			this.mostrarOpcionesHabilidad();
+			opcion = input.nextInt();
+			input.nextLine();
+			switch (opcion) {
+				case 1:
+					e.altaConocimientos();
+					break;
+				case 2:
+					e.mostrarConocimientos();
+					break;
+				case 3:
+					// e.bajaConocimiento();
+					break;
+				case 0:
+					System.out.println("Volviendo al menú principal...");
+					break;
+				default:
+					System.out.println("Ingrese una opción valida");
+					break;
+			}
+		} while (opcion != 0);
+	}
+
 	private void menuPrincipal() {
 		int opcion = 0;
 		do {
@@ -105,8 +178,10 @@ public class Ejecutora {
 					this.menuPuestos();
 					break;
 				case 3:
+					this.menuConvocatorias();
 					break;
 				case 4:
+					this.menuConocimientos();
 					break;
 				case 0:
 					System.out.println("Saliendo...");

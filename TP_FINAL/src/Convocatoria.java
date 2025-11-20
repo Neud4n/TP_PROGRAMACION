@@ -64,7 +64,23 @@ public class Convocatoria {
 		System.out.println("Lista de aspirantes al puesto: ");
 		for (Empleado e : aspirantes) {
 			System.out.println(e.toString());
-			;
 		}
+	}
+
+	public void imprimirDatos() {
+		System.out.println("========================================");
+		System.out.println("       DETALLES DE LA CONVOCATORIA      ");
+		System.out.println("========================================");
+		System.out.println(" ID                  : " + this.ID);
+		System.out.println(" Puesto              : " + this.puestoConvotaria.getDescripcion());
+		System.out.println(" Vacantes Disponibles: " + this.vacantes);
+		System.out.println(" Estado              : " + (this.estadoConvocatoria ? "ABIERTA" : "CERRADA"));
+		System.out.println("----------------------------------------");
+		System.out.println(" Fecha Inicio        : " + this.inicioConvotaria);
+		System.out.println(
+				" Fecha Fin           : " + (this.finConvocatoria != null ? this.finConvocatoria : "En curso"));
+		System.out.println("----------------------------------------");
+		System.out.println(" Cant. Aspirantes    : " + this.aspirantes.size());
+		System.out.println("========================================");
 	}
 }

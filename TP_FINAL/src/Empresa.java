@@ -253,7 +253,31 @@ public class Empresa {
 
     // Caso de uso 6: Agregar requerimiento puesto
     public void agregarRequerimientoPuesto() {
-        String descripcion;
+        String descripcionConocimiento;
+        Integer experiencia;
+        Conocimiento aux;
+        String descripcionPuesto;
+        Puesto p;
+        do {
+            System.out.println("Ingrese la descripcion del conocimiento");
+            descripcionConocimiento = input.nextLine();
+            aux = this.getConocimiento(descripcionConocimiento);
+            if (aux == null) {
+                System.out.println("El conocimiento ingresado no existe en el sistema.");
+            }
+        } while (aux == null);
+        System.out.println("Ingrese los años de experiencia en: " + descripcionConocimiento);
+        experiencia = input.nextInt();
+        input.nextLine();
+        do {
+            System.out.println("Ingrese la descripcion del puesto");
+            descripcionPuesto = input.nextLine();
+            p = this.getPuesto(descripcionPuesto);
+            if (p == null) {
+                System.out.println("El puesto ingresado no existe en el sistema.");
+            }
+        } while (p == null);
+        p.getRequerimientos().put(aux, experiencia);
     }
 
     // Caso de uso 7: Mostrar puestos jerarquicos y no jerarquicos.
@@ -417,4 +441,33 @@ public class Empresa {
     public void mostrarAspirantes() {
         // Completar
     }
+
+    public void mostrarEmpleado() {
+        int dni;
+        Empleado e;
+        do {
+            System.out.println("Ingrese el DNI del empleado");
+            dni = input.nextInt();
+            e = this.getEmpleado(dni);
+            if (e == null) {
+                System.out.println("El DNI ingresado no existe.");
+            }
+        } while (e == null);
+        e.imprimirDatos();
+    }
+
+    public void mostrarPuesto() {
+        String descripcion;
+        Puesto p;
+        do {
+            System.out.println("Ingrese la descripcion del puesto");
+            descripcion = input.nextLine();
+            p = this.getPuesto(descripcion);
+            if (p == null) {
+                System.out.println("El puesto ingresado no existe en el sistema.");
+            }
+        } while (p == null);
+        p.imprimirDatos();
+    }
+
 }

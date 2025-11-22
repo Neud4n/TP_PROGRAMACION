@@ -68,7 +68,7 @@ public class Ejecutora {
 					e.altaEmpleado();
 					break;
 				case 2:
-					// e.mostrarEmpleado();
+					e.mostrarEmpleado();
 					break;
 				case 3:
 					e.mostrarEmpleados();
@@ -97,6 +97,7 @@ public class Ejecutora {
 					e.altaPuesto();
 					break;
 				case 2:
+					e.mostrarPuesto();
 					break;
 				case 3:
 					e.mostrarPuestos();

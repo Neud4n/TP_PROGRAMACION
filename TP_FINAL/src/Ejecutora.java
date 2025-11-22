@@ -12,6 +12,8 @@ public class Ejecutora {
 		System.out.println("   1. Alta Empleado");
 		System.out.println("   2. Mostrar Ficha Empleado");
 		System.out.println("   3. Mostrar Ficha Empleados");
+		System.out.println("   4. Agregar habilidad a un empleado");
+		System.out.println("   5. Baja Empleado");
 		System.out.println("   0. Volver al menú principal");
 		System.out.println("========================================");
 		System.out.print("Ingrese una opción: ");
@@ -24,6 +26,7 @@ public class Ejecutora {
 		System.out.println("   1. Alta Puesto");
 		System.out.println("   2. Mostrar Puesto");
 		System.out.println("   3. Mostrar Puestos");
+		System.out.println("   4. Baja Puesto");
 		System.out.println("   0. Volver al menú principal");
 		System.out.println("========================================");
 		System.out.print("Ingrese una opción: ");
@@ -65,9 +68,13 @@ public class Ejecutora {
 					e.altaEmpleado();
 					break;
 				case 2:
+					// e.mostrarEmpleado();
 					break;
 				case 3:
 					e.mostrarEmpleados();
+					break;
+				case 4:
+					e.agregarSkillEmpleado();
 					break;
 				case 0:
 					System.out.println("Volviendo al menú principal...");
@@ -117,6 +124,18 @@ public class Ejecutora {
 				case 2:
 					e.mostrarConvocatorias();
 					break;
+				case 3:
+					// e.cerrarConvocatoria();
+					break;
+				case 4:
+					e.agregarAspirante();
+					break;
+				case 5:
+					// e.seleccionarAspirante();
+					break;
+				case 6:
+					e.mostrarAspirantes();
+					break;
 				case 0:
 					System.out.println("Volviendo al menú principal...");
 					break;
@@ -133,6 +152,10 @@ public class Ejecutora {
 		System.out.println("========================================");
 		System.out.println("   1. Alta Convocatoria");
 		System.out.println("   2. Mostrar Convocatorias");
+		System.out.println("   3. Cerrar Convocatoria");
+		System.out.println("   4. Agregar aspirante a una convocatoria");
+		System.out.println("   5. Seleccionar aspirante de una convocatoria");
+		System.out.println("   6. Mostrar aspirantes de una convocatoria");
 		System.out.println("   0. Volver al menú principal");
 		System.out.println("========================================");
 		System.out.print("Ingrese una opción: ");

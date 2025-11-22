@@ -39,13 +39,33 @@ public class Convocatoria {
 	}
 
 	public void agregarAspirante(Empleado e) {
-		// Completar
+
+		if (!this.hayVacantes()) {
+			System.out.println("No hay vacantes para agregar aspirantes");
+			return;
+		}
+
+		if (this.aspirantes.contains(e)) {
+			System.out.println("El aspirante ya esta inscrito");
+			return;
+		}
+
+		if (!this.puestoConvotaria.cumpleRequisitos(e)) {
+			System.out.println("El aspirante no cumple con los requisitos del puesto");
+			return;
+		}
+
+		// Completar...
+
+		this.aspirantes.add(e);
+		this.vacantes--;
 	}
 
 	public void seleccionarAspirante() {
 
 		if (this.aspirantes.isEmpty()) {
 			System.out.println("No hay aspirantes para seleccionar");
+			return;
 		}
 
 		// 1. Validar que hayan aspirantes. -- Hecho.

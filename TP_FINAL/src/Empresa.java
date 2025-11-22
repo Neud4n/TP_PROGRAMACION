@@ -371,7 +371,41 @@ public class Empresa {
 
     // Caso de uso 11: Agregar aspirante a una convocatoria
     public void agregarAspirante() {
-        // Completar
+
+        if (convocatorias.isEmpty()) {
+            System.out.println("No hay convocatorias en el sistema.");
+            return;
+        }
+
+        if (empleados.isEmpty()) {
+            System.out.println("No hay empleados en el sistema.");
+            return;
+        }
+
+        int dni;
+        int idConvocatoria;
+        Empleado e;
+        Convocatoria c;
+        do {
+            System.out.println("Ingrese el DNI del aspirante");
+            dni = input.nextInt();
+            e = this.getEmpleado(dni);
+            if (e == null) {
+                System.out.println("El DNI ingresado no existe.");
+            }
+        } while (e == null);
+        do {
+            System.out.println("Ingrese el ID de la convocatoria");
+            idConvocatoria = input.nextInt();
+            c = this.getConvocatoria(idConvocatoria);
+            if (c == null) {
+                System.out.println("El ID de la convocatoria ingresado no existe.");
+            }
+        } while (c == null);
+        // En el método agregarAspirante debería:
+        // Verificar que el empleado no esté en la lista de aspirantes.
+        // Y también que el empleado cumpla con los requisitos del puesto.
+        c.agregarAspirante(e);
     }
 
     // Caso de uso 12: Seleccionar aspirante de una convocatoria

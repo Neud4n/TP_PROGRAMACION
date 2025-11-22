@@ -42,6 +42,7 @@ public class PuestoJerarquico extends Puesto {
 		}
 		this.empleado = (EmpleadoJerarquico) e;
 		this.empleado.setPuesto(this);
+		this.empleado.reiniciarAntiguedad();
 		return true;
 	}
 

@@ -15,7 +15,7 @@ public final class EmpleadoJerarquico extends Empleado {
 		return EmpleadoJerarquico.antiguedad_minima_cambio;
 	}
 
-	private void reiniciarAntiguedad() {
+	public void reiniciarAntiguedad() {
 		this.antiguedadEnCargoActual = 0;
 	}
 

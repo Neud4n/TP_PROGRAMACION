@@ -3,7 +3,7 @@ public class Conocimiento {
 	private String descripcion;
 
 	public Conocimiento(String descripcion) {
-		this.descripcion = descripcion;
+		this.descripcion = descripcion.toUpperCase();
 	}
 
 	public String getDescripcion() {

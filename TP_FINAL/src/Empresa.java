@@ -212,7 +212,7 @@ public class Empresa {
         do {
             System.out.println("Ingrese la descripcion del conocimiento");
             descripcion = input.nextLine();
-            aux = this.getConocimiento(descripcion);
+            aux = this.getConocimiento(descripcion.toUpperCase());
             if (aux != null) {
                 System.out.println("El conocimiento ya existe en el sistema.");
             }
@@ -253,7 +253,7 @@ public class Empresa {
 
     // Caso de uso 6: Agregar requerimiento puesto
     public void agregarRequerimientoPuesto() {
-        // Completar.
+        String descripcion;
     }
 
     // Caso de uso 7: Mostrar puestos jerarquicos y no jerarquicos.

@@ -55,8 +55,6 @@ public class Convocatoria {
 			return;
 		}
 
-		// Completar...
-
 		this.aspirantes.add(e);
 		this.vacantes--;
 	}

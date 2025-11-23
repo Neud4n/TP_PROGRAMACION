@@ -56,7 +56,6 @@ public class Convocatoria {
 		}
 
 		this.aspirantes.add(e);
-		this.vacantes--;
 	}
 
 	public void seleccionarAspirante() {
@@ -66,12 +65,20 @@ public class Convocatoria {
 			return;
 		}
 
+		// Si el empleado es Jerarquico y el puesto no, deberíamos convertir el empleado
+		// en NoJerarquico.
+		// Si el empleado es NoJerarquico y el puesto es Jerarquico, deberíamos
+		// convertir
+		// el empleado en Jerarquico.
+
 		// 1. Validar que hayan aspirantes. -- Hecho.
 		// 2. Permitirte elegir un aspirante.
 		// 3. Asignarle el puesto al aspirante.
 		// 4. Al puesto asignarle el aspirante.
 		// 5. A la convocatoria, restarle una vacante.
 		// 6. Si la convocatoria, no tiene más vacantes cerrarla.
+
+		this.vacantes--; // Reducimos la cantidad de vacantes cuando se selecciona un aspirante.
 
 		if (!this.hayVacantes()) {
 			this.cerrarConvocatoria();

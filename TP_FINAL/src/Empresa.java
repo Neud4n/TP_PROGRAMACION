@@ -439,7 +439,17 @@ public class Empresa {
 
     // Caso de uso 13: Mostrar aspirantes de una convocatoria
     public void mostrarAspirantes() {
-        // Completar
+        int idConvocatoria;
+        Convocatoria c;
+        do {
+            System.out.println("Ingrese el ID de la convocatoria");
+            idConvocatoria = input.nextInt();
+            c = this.getConvocatoria(idConvocatoria);
+            if (c == null) {
+                System.out.println("El ID de la convocatoria ingresado no existe.");
+            }
+        } while (c == null);
+        c.imprimirDatos();
     }
 
     public void mostrarEmpleado() {

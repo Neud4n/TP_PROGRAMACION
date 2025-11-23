@@ -44,6 +44,21 @@ public class Ejecutora {
 		System.out.print("Ingrese una opción: ");
 	}
 
+	private void mostrarOpcionesConvocatoria() {
+		System.out.println("========================================");
+		System.out.println("           GESTIÓN DE CONVOCATORIAS       ");
+		System.out.println("========================================");
+		System.out.println("   1. Alta Convocatoria");
+		System.out.println("   2. Mostrar Convocatorias");
+		System.out.println("   3. Cerrar Convocatoria");
+		System.out.println("   4. Agregar aspirante a una convocatoria");
+		System.out.println("   5. Seleccionar aspirante de una convocatoria");
+		System.out.println("   6. Mostrar aspirantes de una convocatoria");
+		System.out.println("   0. Volver al menú principal");
+		System.out.println("========================================");
+		System.out.print("Ingrese una opción: ");
+	}
+
 	private void mostrarOpciones() {
 		System.out.println("\n========================================");
 		System.out.println("           SISTEMA DE GESTIÓN           ");
@@ -126,13 +141,13 @@ public class Ejecutora {
 					e.mostrarConvocatorias();
 					break;
 				case 3:
-					// e.cerrarConvocatoria();
+					e.cerrarConvocatoria();
 					break;
 				case 4:
 					e.agregarAspirante();
 					break;
 				case 5:
-					// e.seleccionarAspirante();
+					e.seleccionarAspirante();
 					break;
 				case 6:
 					e.mostrarAspirantes();
@@ -145,21 +160,6 @@ public class Ejecutora {
 					break;
 			}
 		} while (opcion != 0);
-	}
-
-	private void mostrarOpcionesConvocatoria() {
-		System.out.println("========================================");
-		System.out.println("           GESTIÓN DE CONVOCATORIAS       ");
-		System.out.println("========================================");
-		System.out.println("   1. Alta Convocatoria");
-		System.out.println("   2. Mostrar Convocatorias");
-		System.out.println("   3. Cerrar Convocatoria");
-		System.out.println("   4. Agregar aspirante a una convocatoria");
-		System.out.println("   5. Seleccionar aspirante de una convocatoria");
-		System.out.println("   6. Mostrar aspirantes de una convocatoria");
-		System.out.println("   0. Volver al menú principal");
-		System.out.println("========================================");
-		System.out.print("Ingrese una opción: ");
 	}
 
 	private void menuConocimientos() {

@@ -21,12 +21,12 @@ public class Empresa {
 
         // Pre-carga de conocimientos
         Conocimiento gcp = new Conocimiento("GCP");
-        Conocimiento terraform = new Conocimiento("Terraform");
-        Conocimiento devops = new Conocimiento("DevOps");
+        Conocimiento terraform = new Conocimiento("TERRAFORM");
+        Conocimiento devops = new Conocimiento("DEVOPS");
         Conocimiento html = new Conocimiento("HTML");
-        Conocimiento javascript = new Conocimiento("Javascript");
+        Conocimiento javascript = new Conocimiento("JAVASCRIPT");
         Conocimiento css = new Conocimiento("CSS");
-        Conocimiento linux = new Conocimiento("Linux");
+        Conocimiento linux = new Conocimiento("LINUX");
         this.conocimientos.add(gcp);
         this.conocimientos.add(terraform);
         this.conocimientos.add(devops);
@@ -157,13 +157,13 @@ public class Empresa {
         do {
             System.out.println("Ingrese una habilidad dura del empleado");
             des = input.nextLine();
-            Conocimiento key = this.getConocimiento(des);
+            Conocimiento key = this.getConocimiento(des.toUpperCase());
 
             if (key == null) {
                 System.out.println("La habilidad ingresada no existe en el sistema.");
             } else if (!skills.containsKey(key)) {
                 do {
-                    System.out.println("Ingrese los años de experiencia en: " + des);
+                    System.out.println("Ingrese los años de experiencia en: " + des.toUpperCase());
                     experiencia = input.nextInt();
                 } while (experiencia <= 0);
                 skills.put(key, experiencia);
@@ -240,7 +240,7 @@ public class Empresa {
         System.out.println("Ingrese la descripcion del conocimiento");
         do {
             descripcion = input.nextLine();
-            aux = this.getConocimiento(descripcion);
+            aux = this.getConocimiento(descripcion.toUpperCase());
             if (aux == null) {
                 System.out.println("El conocimiento ingresado no existe en el sistema.");
             }
@@ -469,7 +469,7 @@ public class Empresa {
                 System.out.println("El ID de la convocatoria ingresado no existe.");
             }
         } while (c == null);
-        c.imprimirDatos();
+        c.mostrarAspirantes();
     }
 
     public void mostrarEmpleado() {
@@ -500,4 +500,17 @@ public class Empresa {
         p.imprimirDatos();
     }
 
+    public void cerrarConvocatoria() {
+        int idConvocatoria;
+        Convocatoria c;
+        do {
+            System.out.println("Ingrese el ID de la convocatoria");
+            idConvocatoria = input.nextInt();
+            c = this.getConvocatoria(idConvocatoria);
+            if (c == null) {
+                System.out.println("El ID de la convocatoria ingresado no existe.");
+            }
+        } while (c == null);
+        c.cerrarConvocatoria();
+    }
 }

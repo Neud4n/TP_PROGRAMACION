@@ -33,12 +33,17 @@ public class Convocatoria {
 		return this.vacantes > 0;
 	}
 
-	private void cerrarConvocatoria() {
+	public void cerrarConvocatoria() {
 		this.estadoConvocatoria = false;
 		this.finConvocatoria = LocalDate.now();
 	}
 
 	public void agregarAspirante(Empleado e) {
+
+		if (!this.estadoConvocatoria) {
+			System.out.println("La convocatoria esta cerrada");
+			return;
+		}
 
 		if (!this.hayVacantes()) {
 			System.out.println("No hay vacantes para agregar aspirantes");
@@ -51,7 +56,6 @@ public class Convocatoria {
 		}
 
 		if (!this.puestoConvotaria.cumpleRequisitos(e)) {
-			System.out.println("El aspirante no cumple con los requisitos del puesto");
 			return;
 		}
 
@@ -59,6 +63,11 @@ public class Convocatoria {
 	}
 
 	public void seleccionarAspirante(Empleado e) {
+
+		if (!this.estadoConvocatoria) {
+			System.out.println("La convocatoria esta cerrada");
+			return;
+		}
 
 		if (this.aspirantes.isEmpty()) {
 			System.out.println("No hay aspirantes para seleccionar");
@@ -88,10 +97,13 @@ public class Convocatoria {
 	}
 
 	public void mostrarAspirantes() {
-		System.out.println("Lista de aspirantes al puesto: ");
+		System.out.println("========================================");
+		System.out.println("     Lista de aspirantes al puesto      ");
+		System.out.println("========================================");
 		for (Empleado e : aspirantes) {
-			System.out.println(e.toString());
+			e.imprimirDatos();
 		}
+		System.out.println("========================================");
 	}
 
 	public void imprimirDatos() {
@@ -106,6 +118,13 @@ public class Convocatoria {
 		System.out.println(" Fecha Inicio        : " + this.inicioConvotaria);
 		System.out.println(
 				" Fecha Fin           : " + (this.finConvocatoria != null ? this.finConvocatoria : "En curso"));
+		System.out.println("----------------------------------------");
+		System.out.println(" Requisitos          :");
+		for (Conocimiento c : this.puestoConvotaria.getRequerimientos().keySet()) {
+			System.out.println(
+					"   - " + c.getDescripcion() + " (Experiencia " + this.puestoConvotaria.getRequerimientos().get(c)
+							+ " años)");
+		}
 		System.out.println("----------------------------------------");
 		System.out.println(" Cant. Aspirantes    : " + this.aspirantes.size());
 		System.out.println("========================================");

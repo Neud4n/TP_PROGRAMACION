@@ -434,7 +434,27 @@ public class Empresa {
 
     // Caso de uso 12: Seleccionar aspirante de una convocatoria
     public void seleccionarAspirante() {
-        // Completar
+        int dni;
+        int idConvocatoria;
+        Empleado e;
+        Convocatoria c;
+        do {
+            System.out.println("Ingrese el DNI del aspirante");
+            dni = input.nextInt();
+            e = this.getEmpleado(dni);
+            if (e == null) {
+                System.out.println("El DNI ingresado no existe.");
+            }
+        } while (e == null);
+        do {
+            System.out.println("Ingrese el ID de la convocatoria");
+            idConvocatoria = input.nextInt();
+            c = this.getConvocatoria(idConvocatoria);
+            if (c == null) {
+                System.out.println("El ID de la convocatoria ingresado no existe.");
+            }
+        } while (c == null);
+        c.seleccionarAspirante(e);
     }
 
     // Caso de uso 13: Mostrar aspirantes de una convocatoria

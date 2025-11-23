@@ -58,27 +58,29 @@ public class Convocatoria {
 		this.aspirantes.add(e);
 	}
 
-	public void seleccionarAspirante() {
+	public void seleccionarAspirante(Empleado e) {
 
 		if (this.aspirantes.isEmpty()) {
 			System.out.println("No hay aspirantes para seleccionar");
 			return;
 		}
 
-		// Si el empleado es Jerarquico y el puesto no, deberíamos convertir el empleado
-		// en NoJerarquico.
-		// Si el empleado es NoJerarquico y el puesto es Jerarquico, deberíamos
-		// convertir
-		// el empleado en Jerarquico.
+		if (!this.aspirantes.contains(e)) {
+			System.out.println("El aspirante no esta inscrito");
+			return;
+		}
 
-		// 1. Validar que hayan aspirantes. -- Hecho.
-		// 2. Permitirte elegir un aspirante.
-		// 3. Asignarle el puesto al aspirante.
-		// 4. Al puesto asignarle el aspirante.
-		// 5. A la convocatoria, restarle una vacante.
-		// 6. Si la convocatoria, no tiene más vacantes cerrarla.
+		if (e.sosJerarquico() && !this.puestoConvotaria.sosJerarquico()) {
+			e = new EmpleadoNoJerarquico(e.getDni(), e.getNombre(), e.getApellido(), e.getAntiguedad(), e.getSkills());
+		}
 
-		this.vacantes--; // Reducimos la cantidad de vacantes cuando se selecciona un aspirante.
+		if (!e.sosJerarquico() && this.puestoConvotaria.sosJerarquico()) {
+			e = new EmpleadoJerarquico(e.getDni(), e.getNombre(), e.getApellido(), e.getSkills(), e.getAntiguedad());
+		}
+
+		this.puestoConvotaria.tomarEmpleado(e);
+
+		this.vacantes--;
 
 		if (!this.hayVacantes()) {
 			this.cerrarConvocatoria();

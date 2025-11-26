@@ -239,16 +239,6 @@ public class Empresa {
         System.out.println(">> Alta de empleado finalizada!");
     }
 
-    // Caso de uso 2: Dar de alta un puesto
-    public void altaPuesto() {
-        // Completar.
-    }
-
-    // Caso de uso 3: Crear convocatoria
-    public void altaConvocatoria() {
-        // Completar.
-    }
-
     // Caso de uso 4: Alta de conocimientos
     public void altaConocimientos() {
         String descripcion;
@@ -573,5 +563,35 @@ public class Empresa {
             }
         } while (c == null);
         c.imprimirDatos();
+    }
+
+    // =======================
+    // CASOS DE USO PENDIENTES
+    // =======================
+
+    // Caso de uso 2: Dar de alta un puesto
+    public void altaPuesto() {
+        // Completar.
+    }
+
+    // Caso de uso 3: Crear convocatoria
+    public void altaConvocatoria() {
+        // Completar.
+    }
+
+    public void bajaPuesto() {
+        // Completar.
+    }
+
+    public void bajaConvocatoria() {
+        // Completar.
+    }
+
+    public void bajaEmpleado() {
+        // Completar.
+    }
+
+    public void bajaConocimiento() {
+        // Completar -- A discutir si implementarlo o no.
     }
 }

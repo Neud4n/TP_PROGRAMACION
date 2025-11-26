@@ -21,6 +21,10 @@ public final class EmpleadoJerarquico extends Empleado {
 		return EmpleadoJerarquico.antiguedad_minima_cambio;
 	}
 
+	public int getAntiguedadEnCargoActual() {
+		return this.antiguedadEnCargoActual;
+	}
+
 	public void reiniciarAntiguedad() {
 		this.antiguedadEnCargoActual = 0;
 	}
@@ -33,6 +37,11 @@ public final class EmpleadoJerarquico extends Empleado {
 	@Override
 	public boolean validacionAntiguedadCargo() {
 		return antiguedadEnCargoActual >= EmpleadoJerarquico.getAntiguedadMinimaParaCambio();
+	}
+
+	@Override
+	public boolean esNuevoIngreso() {
+		return this.antiguedadEnCargoActual == 0 && super.getPuesto() == null;
 	}
 
 	@Override

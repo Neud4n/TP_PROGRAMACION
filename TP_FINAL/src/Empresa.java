@@ -570,18 +570,16 @@ public class Empresa {
 
     // Caso de uso 2: Dar de alta un puesto
     public void altaPuesto() {
-      
         // Completar. -aye
     }
 
     // Caso de uso 3: Crear convocatoria
     public void altaConvocatoria() {
-        
         // Completar. -vale
     }
 
     public void bajaPuesto() {
-        // Completar. -aye
+        // Completar. -aye la mas linda
     }
 
     public void bajaConvocatoria() {

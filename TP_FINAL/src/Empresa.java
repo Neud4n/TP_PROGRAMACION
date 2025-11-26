@@ -570,48 +570,29 @@ public class Empresa {
 
     // Caso de uso 2: Dar de alta un puesto
     public void altaPuesto() {
-        // Completar.
-        // Completar.
-        // Completar.
-        /// Completar.
-        /// // Completar.
-        /// // Completar.
-        /// // Completar.
+      
+        // Completar. -aye
     }
 
     // Caso de uso 3: Crear convocatoria
     public void altaConvocatoria() {
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
-        // Completar.
+        
+        // Completar. -vale
     }
 
     public void bajaPuesto() {
-        // Completar.
+        // Completar. -aye
     }
 
     public void bajaConvocatoria() {
-        // Completar.
+        // Completar. - vale
     }
 
     public void bajaEmpleado() {
-        // Completar.
+        // Completar. -tizi
     }
 
     public void bajaConocimiento() {
-        // Completar -- A discutir si implementarlo o no.
+        // Completar -- -tizi
     }
 }

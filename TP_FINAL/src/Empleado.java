@@ -26,10 +26,6 @@ public abstract class Empleado {
 		return this.dni == dni;
 	}
 
-	public int getAntiguedadEmpresa() {
-		return this.antiguedadEnEmpresa;
-	}
-
 	public int getDni() {
 		return this.dni;
 	}

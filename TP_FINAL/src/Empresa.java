@@ -11,14 +11,25 @@ public class Empresa {
     private ArrayList<Conocimiento> conocimientos;
     private Scanner input;
 
-    public Empresa() {
+    private void inicializarDatos() {
+        int num;
+        System.out.println("\n========================================");
+        System.out.println("          CONFIGURACIÓN INICIAL         ");
+        System.out.println("========================================");
+        do {
+            System.out.print("Ingrese la antigüedad mínima para Puesto Jerárquico: ");
+            num = input.nextInt();
+            if (num <= 0) {
+                System.out.println(">> Error: El valor debe ser mayor a 0.");
+            } else {
+                PuestoJerarquico.setAntiguedadMinimaRequerida(num);
+            }
+        } while (num <= 0);
+        System.out.println(">> ¡Datos cargados correctamente!");
+        input.nextLine();
+    }
 
-        this.puestos = new ArrayList<>();
-        this.empleados = new ArrayList<>();
-        this.convocatorias = new ArrayList<>();
-        this.conocimientos = new ArrayList<>();
-        this.input = new Scanner(System.in);
-
+    private void test() {
         // Pre-carga de conocimientos
         Conocimiento gcp = new Conocimiento("GCP");
         Conocimiento terraform = new Conocimiento("TERRAFORM");
@@ -34,33 +45,65 @@ public class Empresa {
         this.conocimientos.add(javascript);
         this.conocimientos.add(css);
         this.conocimientos.add(linux);
+
         // Pre-carga de HT
-        Hashtable<Conocimiento, Integer> requerimientosCloudEngineer = new Hashtable<>();
-        requerimientosCloudEngineer.put(gcp, 2);
-        requerimientosCloudEngineer.put(terraform, 3);
-        requerimientosCloudEngineer.put(devops, 1);
-        requerimientosCloudEngineer.put(linux, 1);
-        Hashtable<Conocimiento, Integer> requerimientosFrontEndDeveloper = new Hashtable<>();
-        requerimientosFrontEndDeveloper.put(html, 1);
-        requerimientosFrontEndDeveloper.put(javascript, 3);
-        requerimientosFrontEndDeveloper.put(css, 1);
-        // Pre-carga de Puestos
-        Puesto cloudEngineer = new PuestoNoJerarquico("Cloud Engineer", requerimientosCloudEngineer);
-        Puesto frontEndDeveloper = new PuestoNoJerarquico("FrontEnd Developer", requerimientosFrontEndDeveloper);
+        Hashtable<Conocimiento, Integer> reqCloudEngineer = new Hashtable<>();
+        reqCloudEngineer.put(gcp, 2);
+        reqCloudEngineer.put(terraform, 3);
+        reqCloudEngineer.put(devops, 1);
+        reqCloudEngineer.put(linux, 1);
+
+        Hashtable<Conocimiento, Integer> reqFrontEndDeveloper = new Hashtable<>();
+        reqFrontEndDeveloper.put(html, 1);
+        reqFrontEndDeveloper.put(javascript, 3);
+        reqFrontEndDeveloper.put(css, 1);
+
+        Hashtable<Conocimiento, Integer> reqJefeFrontEndDeveloper = new Hashtable<>();
+        reqJefeFrontEndDeveloper.put(html, 5);
+        reqJefeFrontEndDeveloper.put(javascript, 5);
+        reqJefeFrontEndDeveloper.put(css, 5);
+
+        // Pre-carga de Puestos no Jerarquicos
+        Puesto cloudEngineer = new PuestoNoJerarquico("Cloud Engineer", reqCloudEngineer);
+        Puesto frontEndDeveloper = new PuestoNoJerarquico("FrontEnd Developer", reqFrontEndDeveloper);
+
         this.puestos.add(frontEndDeveloper);
         this.puestos.add(cloudEngineer);
-        // Pre-carga de Empleados
-        Empleado dan = new EmpleadoNoJerarquico(42, "Dan", "Zabala", 3, requerimientosCloudEngineer);
+
+        // Pre-carga de Puestos Jerarquicos
+        Puesto jefeFrontEndDeveloper = new PuestoJerarquico("Jefe FrontEnd Developer", reqJefeFrontEndDeveloper);
+        this.puestos.add(jefeFrontEndDeveloper);
+
+        // Pre-carga de Empleados no Jerarquicos
+        Empleado dan = new EmpleadoNoJerarquico(42, "Dan", "Zabala", 3, reqCloudEngineer);
         cloudEngineer.tomarEmpleado(dan);
         this.empleados.add(dan);
-        Empleado aye = new EmpleadoNoJerarquico(43, "Ayelen", "Victorino", 1, requerimientosFrontEndDeveloper);
+        Empleado aye = new EmpleadoNoJerarquico(43, "Ayelen", "Victorino", 1, reqFrontEndDeveloper);
         frontEndDeveloper.tomarEmpleado(aye);
         this.empleados.add(aye);
+        Empleado tizi = new EmpleadoJerarquico(44, "Tiziano", "UM", reqJefeFrontEndDeveloper, 10, 5);
+
+        // Pre-carga de Empleados Jerarquicos
+        this.empleados.add(tizi);
+        tizi.setPuesto(jefeFrontEndDeveloper);
+        jefeFrontEndDeveloper.tomarEmpleado(tizi);
+
         // Pre-carga de Convocatorias
         Convocatoria convocatoria1 = new Convocatoria(1, LocalDate.now(), cloudEngineer);
         this.convocatorias.add(convocatoria1);
         Convocatoria convocatoria2 = new Convocatoria(2, LocalDate.now(), frontEndDeveloper);
         this.convocatorias.add(convocatoria2);
+    }
+
+    public Empresa() {
+
+        this.puestos = new ArrayList<>();
+        this.empleados = new ArrayList<>();
+        this.convocatorias = new ArrayList<>();
+        this.conocimientos = new ArrayList<>();
+        this.input = new Scanner(System.in);
+        this.inicializarDatos();
+        this.test();
     }
 
     private Conocimiento getConocimiento(String descripcion) {
@@ -193,6 +236,7 @@ public class Empresa {
                 break;
         }
 
+        System.out.println(">> Alta de empleado finalizada!");
     }
 
     // Caso de uso 2: Dar de alta un puesto
@@ -219,6 +263,7 @@ public class Empresa {
         } while (aux != null);
         Conocimiento conocimiento = new Conocimiento(descripcion);
         this.conocimientos.add(conocimiento);
+        System.out.println(">> Alta de conocimiento finalizada!");
     }
 
     // Caso de uso 5: Agregar conocimiento empleado
@@ -249,6 +294,7 @@ public class Empresa {
         experiencia = input.nextInt();
         input.nextLine();
         e.getSkills().put(aux, experiencia);
+        System.out.println(">> Conocimiento agregado/actualizado correctamente!");
     }
 
     // Caso de uso 6: Agregar requerimiento puesto
@@ -278,6 +324,7 @@ public class Empresa {
             }
         } while (p == null);
         p.getRequerimientos().put(aux, experiencia);
+        System.out.println(">> Requerimiento agregado/actualizado correctamente!");
     }
 
     // Caso de uso 7: Mostrar puestos jerarquicos y no jerarquicos.

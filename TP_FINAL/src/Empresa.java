@@ -473,10 +473,8 @@ public class Empresa {
                 System.out.println("El ID de la convocatoria ingresado no existe.");
             }
         } while (c == null);
-        // En el método agregarAspirante debería:
-        // Verificar que el empleado no esté en la lista de aspirantes.
-        // Y también que el empleado cumpla con los requisitos del puesto.
         c.agregarAspirante(e);
+        System.out.println(">> Aspirante agregado correctamente!");
     }
 
     // Caso de uso 12: Seleccionar aspirante de una convocatoria
@@ -502,6 +500,7 @@ public class Empresa {
             }
         } while (c == null);
         c.seleccionarAspirante(e);
+        System.out.println(">> Aspirante seleccionado correctamente!");
     }
 
     // Caso de uso 13: Mostrar aspirantes de una convocatoria
@@ -559,5 +558,20 @@ public class Empresa {
             }
         } while (c == null);
         c.cerrarConvocatoria();
+        System.out.println(">> Convocatoria cerrada correctamente!");
+    }
+
+    public void mostrarConvocatoria() {
+        int idConvocatoria;
+        Convocatoria c;
+        do {
+            System.out.println("Ingrese el ID de la convocatoria");
+            idConvocatoria = input.nextInt();
+            c = this.getConvocatoria(idConvocatoria);
+            if (c == null) {
+                System.out.println("El ID de la convocatoria ingresado no existe.");
+            }
+        } while (c == null);
+        c.imprimirDatos();
     }
 }

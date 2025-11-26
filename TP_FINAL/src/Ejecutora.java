@@ -49,11 +49,12 @@ public class Ejecutora {
 		System.out.println("           GESTIÓN DE CONVOCATORIAS       ");
 		System.out.println("========================================");
 		System.out.println("   1. Alta Convocatoria");
-		System.out.println("   2. Mostrar Convocatorias");
-		System.out.println("   3. Cerrar Convocatoria");
-		System.out.println("   4. Agregar aspirante a una convocatoria");
-		System.out.println("   5. Seleccionar aspirante de una convocatoria");
-		System.out.println("   6. Mostrar aspirantes de una convocatoria");
+		System.out.println("   2. Mostrar Convocatoria");
+		System.out.println("   3. Mostrar Convocatorias");
+		System.out.println("   4. Cerrar Convocatoria");
+		System.out.println("   5. Agregar aspirante a una convocatoria");
+		System.out.println("   6. Seleccionar aspirante de una convocatoria");
+		System.out.println("   7. Mostrar aspirantes de una convocatoria");
 		System.out.println("   0. Volver al menú principal");
 		System.out.println("========================================");
 		System.out.print("Ingrese una opción: ");
@@ -138,18 +139,21 @@ public class Ejecutora {
 					e.altaConvocatoria();
 					break;
 				case 2:
-					e.mostrarConvocatorias();
+					e.mostrarConvocatoria();
 					break;
 				case 3:
-					e.cerrarConvocatoria();
+					e.mostrarConvocatorias();
 					break;
 				case 4:
-					e.agregarAspirante();
+					e.cerrarConvocatoria();
 					break;
 				case 5:
-					e.seleccionarAspirante();
+					e.agregarAspirante();
 					break;
 				case 6:
+					e.seleccionarAspirante();
+					break;
+				case 7:
 					e.mostrarAspirantes();
 					break;
 				case 0:

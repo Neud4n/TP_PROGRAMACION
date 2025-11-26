@@ -571,6 +571,12 @@ public class Empresa {
     // Caso de uso 2: Dar de alta un puesto
     public void altaPuesto() {
         // Completar.
+        // Completar.
+        // Completar.
+        /// Completar.
+        /// // Completar.
+        /// // Completar.
+        /// // Completar.
     }
 
     // Caso de uso 3: Crear convocatoria

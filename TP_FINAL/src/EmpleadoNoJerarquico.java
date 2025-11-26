@@ -18,6 +18,11 @@ public final class EmpleadoNoJerarquico extends Empleado {
 	}
 
 	@Override
+	public boolean esNuevoIngreso() {
+		return false;
+	}
+
+	@Override
 	public void imprimirDatos() {
 		System.out.println("========================================");
 		System.out.println("           FICHA DE EMPLEADO            ");

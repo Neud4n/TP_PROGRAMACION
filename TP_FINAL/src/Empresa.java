@@ -81,11 +81,10 @@ public class Empresa {
         Empleado aye = new EmpleadoNoJerarquico(43, "Ayelen", "Victorino", 1, reqFrontEndDeveloper);
         frontEndDeveloper.tomarEmpleado(aye);
         this.empleados.add(aye);
-        Empleado tizi = new EmpleadoJerarquico(44, "Tiziano", "UM", reqJefeFrontEndDeveloper, 10, 5);
 
         // Pre-carga de Empleados Jerarquicos
+        Empleado tizi = new EmpleadoJerarquico(44, "Tiziano", "UM", reqJefeFrontEndDeveloper, 10);
         this.empleados.add(tizi);
-        tizi.setPuesto(jefeFrontEndDeveloper);
         jefeFrontEndDeveloper.tomarEmpleado(tizi);
 
         // Pre-carga de Convocatorias

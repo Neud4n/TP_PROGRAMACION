@@ -582,6 +582,21 @@ public class Empresa {
     // Caso de uso 3: Crear convocatoria
     public void altaConvocatoria() {
         // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
+        // Completar.
     }
 
     public void bajaPuesto() {

@@ -96,7 +96,6 @@ public class Empresa {
     }
 
     public Empresa() {
-
         this.puestos = new ArrayList<>();
         this.empleados = new ArrayList<>();
         this.convocatorias = new ArrayList<>();

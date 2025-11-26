@@ -9,11 +9,11 @@ public class Ejecutora {
 		System.out.println("========================================");
 		System.out.println("          GESTIÓN DE EMPLEADOS          ");
 		System.out.println("========================================");
-		System.out.println("   1. Alta Empleado");
-		System.out.println("   2. Mostrar Ficha Empleado");
-		System.out.println("   3. Mostrar Ficha Empleados");
-		System.out.println("   4. Agregar habilidad a un empleado");
-		System.out.println("   5. Baja Empleado");
+		System.out.println("   1. Alta Empleado"); // Hecho
+		System.out.println("   2. Mostrar Ficha Empleado"); // Hecho
+		System.out.println("   3. Mostrar Ficha Empleados"); // Hecho
+		System.out.println("   4. Agregar habilidad a un empleado"); // Hecho
+		System.out.println("   5. Baja Empleado"); // Pendiente
 		System.out.println("   0. Volver al menú principal");
 		System.out.println("========================================");
 		System.out.print("Ingrese una opción: ");
@@ -23,10 +23,10 @@ public class Ejecutora {
 		System.out.println("========================================");
 		System.out.println("           GESTIÓN DE PUESTOS           ");
 		System.out.println("========================================");
-		System.out.println("   1. Alta Puesto");
-		System.out.println("   2. Mostrar Puesto");
-		System.out.println("   3. Mostrar Puestos");
-		System.out.println("   4. Baja Puesto");
+		System.out.println("   1. Alta Puesto"); // Pendiente
+		System.out.println("   2. Mostrar Puesto"); // Hecho
+		System.out.println("   3. Mostrar Puestos"); // Hecho
+		System.out.println("   4. Baja Puesto"); // Pendiente
 		System.out.println("   0. Volver al menú principal");
 		System.out.println("========================================");
 		System.out.print("Ingrese una opción: ");
@@ -36,9 +36,9 @@ public class Ejecutora {
 		System.out.println("========================================");
 		System.out.println("           GESTIÓN DE HABILIDADES       ");
 		System.out.println("========================================");
-		System.out.println("   1. Alta Habilidad");
-		System.out.println("   2. Mostrar Habilidades");
-		System.out.println("   3. Baja Habilidad");
+		System.out.println("   1. Alta Habilidad"); // Hecho
+		System.out.println("   2. Mostrar Habilidades"); // Hecho
+		System.out.println("   3. Baja Habilidad"); // Pendiente
 		System.out.println("   0. Volver al menú principal");
 		System.out.println("========================================");
 		System.out.print("Ingrese una opción: ");
@@ -48,13 +48,13 @@ public class Ejecutora {
 		System.out.println("========================================");
 		System.out.println("           GESTIÓN DE CONVOCATORIAS       ");
 		System.out.println("========================================");
-		System.out.println("   1. Alta Convocatoria");
-		System.out.println("   2. Mostrar Convocatoria");
-		System.out.println("   3. Mostrar Convocatorias");
-		System.out.println("   4. Cerrar Convocatoria");
-		System.out.println("   5. Agregar aspirante a una convocatoria");
-		System.out.println("   6. Seleccionar aspirante de una convocatoria");
-		System.out.println("   7. Mostrar aspirantes de una convocatoria");
+		System.out.println("   1. Alta Convocatoria"); // Pendiente
+		System.out.println("   2. Mostrar Convocatoria"); // Hecho
+		System.out.println("   3. Mostrar Convocatorias"); // Hecho
+		System.out.println("   4. Cerrar Convocatoria"); // Hecho
+		System.out.println("   5. Agregar aspirante a una convocatoria"); // Hecho
+		System.out.println("   6. Seleccionar aspirante de una convocatoria"); // Hecho
+		System.out.println("   7. Mostrar aspirantes de una convocatoria"); // Hecho
 		System.out.println("   0. Volver al menú principal");
 		System.out.println("========================================");
 		System.out.print("Ingrese una opción: ");

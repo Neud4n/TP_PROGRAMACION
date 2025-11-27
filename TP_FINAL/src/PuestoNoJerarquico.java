@@ -59,8 +59,13 @@ public class PuestoNoJerarquico extends Puesto {
 
 	@Override
 	public void eliminarEmpleado(int dni) {
-		if (!this.empleados.isEmpty()) {
-			this.empleados.removeIf(e -> e.getDni() == dni);
+		if (this.empleados != null) {
+			for (Empleado a : empleados) {
+				if (a.getDni() == dni) {
+					this.empleados.remove(a);
+					break;
+				}
+			}
 		}
 	}
 }

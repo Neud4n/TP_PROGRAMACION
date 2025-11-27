@@ -11,12 +11,6 @@ public final class EmpleadoJerarquico extends Empleado {
 		this.antiguedadEnCargoActual = 0;
 	}
 
-	public EmpleadoJerarquico(int dni, String nombre, String apellido,
-			Hashtable<Conocimiento, Integer> skills, int antiguedadEnEmpresa, int antiguedadEnCargoActual) {
-		super(dni, nombre, apellido, skills, antiguedadEnEmpresa);
-		this.antiguedadEnCargoActual = antiguedadEnCargoActual;
-	}
-
 	public static int getAntiguedadMinimaParaCambio() {
 		return EmpleadoJerarquico.antiguedad_minima_cambio;
 	}

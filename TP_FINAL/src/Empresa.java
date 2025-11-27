@@ -92,6 +92,12 @@ public class Empresa {
         this.convocatorias.add(convocatoria1);
         Convocatoria convocatoria2 = new Convocatoria(2, LocalDate.now(), frontEndDeveloper);
         this.convocatorias.add(convocatoria2);
+
+        // Prueba empleado con un cargo
+        Empleado pepe = new EmpleadoNoJerarquico(50, "Pepe", "Perez", 3, reqCloudEngineer);
+        this.empleados.add(pepe);
+        cloudEngineer.tomarEmpleado(pepe);
+
     }
 
     public Empresa() {

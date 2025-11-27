@@ -62,7 +62,6 @@ public class PuestoJerarquico extends Puesto {
 		System.out.println("========================================");
 		System.out.println(String.format("Puesto     : %s", this.getDescripcion()));
 		System.out.println(String.format("Tipo       : %s", "Jerárquico"));
-		System.out.println(String.format("Antigüedad Minima : %d años", PuestoJerarquico.antiguedad_minima_requerida));
 
 		if (this.empleado != null) {
 			System.out.println(String.format("Asignado a : %s %s (DNI: %d)",

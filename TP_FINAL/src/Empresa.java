@@ -668,8 +668,52 @@ public class Empresa {
     }
 
     // Caso de uso 3: Crear convocatoria
-    public void altaConvocatoria() {
-        // Completar. -vale
+    public void altaConvocatoria() {        
+        int vacantes;
+        LocalDate inicio;
+        LocalDate fin;
+        //Puesto puesto;
+        String descripcion;
+
+        
+        System.out.println("Ingrse los datos de la convocatoria: ");
+        System.out.println("Ingrese la cantidad de vancantes; ");
+        vacantes=input.nextInt();
+        System.out.println("Ingrese la fecha de inicio;");
+        inicio=input.next();
+        System.out.println("Ingrese la fecha de finalicación: ");
+        fin = input.next();
+
+        Hashtable<Conocimiento, Integer> requerimientos = new Hashtable<>();
+
+        System.out.println("Ingrese la descripción del puesto: ");
+        descripcion=input.next();
+
+        System.out.print("¿Desea agregar conocimientos requeridos? (s/n): ");
+        String respuesta = input.nextLine();
+
+        while (respuesta.equalsIgnoreCase("s")) {
+
+            System.out.print("Ingrese el nombre del conocimiento: ");
+            String nombreCon = input.nextLine();
+
+            System.out.print("Ingrese el nivel requerido (años de experiencia): ");
+            int nivel = input.nextInt();
+
+            Conocimiento c = new Conocimiento(nombreCon);
+
+            requerimientos.put(c, nivel);
+
+            System.out.print("¿Desea agregar otro conocimiento? (s/n): ");
+            respuesta = input.nextLine();
+        }
+
+        Puesto nuevoPuesto = new PuestoNoJerarquico(descripcionPuesto, requerimientos);
+        Convocatoria nueva = new Convocatoria(vacantes, inicio, nuevoPuesto);
+
+        convocatorias.add(nueva);
+        System.out.println("Convocatoria creada exitosamente.");
+        
     }
 
     public void bajaPuesto() {

@@ -731,6 +731,32 @@ public class Empresa {
     }
 
     public void bajaEmpleado() {
+        int dni;
+        do {
+            do {
+                System.out.println("Ingrese el DNI del empleado");
+                dni = input.nextInt();
+                input.nextLine();
+                if (dni <= 0) {
+                    System.out.println("Error: Debe ser un número positivo.");
+                }
+            } while (dni <= 0);
+            Empleado e = this.getEmpleado(dni);
+            if (e == null) {
+                System.out.println("El empleado no existe");
+            } else {
+                for (Puesto p : this.puestos) {
+                    p.eliminarEmpleado(dni);
+                }
+
+                for (Convocatoria c : this.convocatorias) {
+                    c.eliminarAspirante(dni);
+                }
+
+                this.empleados.remove(e);
+                System.out.println(">>Empleado eliminado del sistema correctamente");
+            }
+        } while (this.salir());
         // Completar. -tizi
     }
 

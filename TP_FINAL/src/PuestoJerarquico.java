@@ -72,4 +72,11 @@ public class PuestoJerarquico extends Puesto {
 		System.out.println("========================================");
 	}
 
+	@Override
+	public void eliminarEmpleado(int dni) {
+		if (this.empleado != null && this.empleado.comparoDni(dni)) {
+			this.empleado = null;
+		}
+	}
+
 }

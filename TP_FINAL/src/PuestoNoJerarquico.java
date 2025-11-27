@@ -56,4 +56,17 @@ public class PuestoNoJerarquico extends Puesto {
 		}
 		System.out.println("========================================");
 	}
+
+	@Override
+	public void eliminarEmpleado(int dni) {
+		if (this.empleados != null) {
+			for (EmpleadoNoJerarquico e : this.empleados) {
+				if (e.comparoDni(dni)) {
+					this.empleados.remove(e);
+					break;
+				}
+			}
+		}
+	}
+
 }

@@ -129,4 +129,16 @@ public class Convocatoria {
 		System.out.println(" Cant. Aspirantes    : " + this.aspirantes.size());
 		System.out.println("========================================");
 	}
+
+	public void eliminarAspirante(int dni) {
+		if (this.aspirantes != null) {
+			for (int i = 0; i < this.aspirantes.size(); i++) {
+				if (this.aspirantes.get(i).getDni() == dni) {
+					this.aspirantes.remove(i);
+					break;
+				}
+			}
+		}
+	}
+
 }

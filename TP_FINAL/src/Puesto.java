@@ -46,4 +46,6 @@ public abstract class Puesto {
 	public abstract boolean sosJerarquico();
 
 	public abstract boolean tomarEmpleado(Empleado e);
+
+	public abstract void eliminarEmpleado(int dni);
 }

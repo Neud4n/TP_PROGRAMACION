@@ -139,6 +139,7 @@ public class Convocatoria {
 				}
 			}
 		}
+		this.vacantes++;
 	}
 
 }

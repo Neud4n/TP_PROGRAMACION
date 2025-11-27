@@ -36,7 +36,7 @@ public class PuestoJerarquico extends Puesto {
 		if (!this.cumpleRequisitos(e)) {
 			return false;
 		}
-		if (!e.validacionAntiguedadCargo() && !e.esNuevoIngreso()) {
+		if (!e.validacionAntiguedadCargo() && e.getPuesto() != null) {
 			System.out.println("El empleado no cumple con la antiguedad mínima requerida en su cargo actual.");
 			return false;
 		}

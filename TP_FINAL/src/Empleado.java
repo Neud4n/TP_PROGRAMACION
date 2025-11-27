@@ -54,8 +54,6 @@ public abstract class Empleado {
 		return skills;
 	}
 
-	public abstract boolean esNuevoIngreso();
-
 	public abstract void imprimirDatos();
 
 }

@@ -40,11 +40,6 @@ public final class EmpleadoJerarquico extends Empleado {
 	}
 
 	@Override
-	public boolean esNuevoIngreso() {
-		return this.antiguedadEnCargoActual == 0 && super.getPuesto() == null;
-	}
-
-	@Override
 	public void imprimirDatos() {
 		System.out.println("========================================");
 		System.out.println("           FICHA DE EMPLEADO            ");

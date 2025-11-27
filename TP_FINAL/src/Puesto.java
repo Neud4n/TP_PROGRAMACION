@@ -39,6 +39,8 @@ public abstract class Puesto {
 		return true;
 	}
 
+	public abstract void liberoPuesto(Empleado e);
+
 	public abstract void imprimirDatos();
 
 	public abstract boolean sosJerarquico();

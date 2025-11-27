@@ -24,9 +24,17 @@ public class PuestoNoJerarquico extends Puesto {
 		if (!this.cumpleRequisitos(e)) {
 			return false;
 		}
+		if (e.getPuesto() != null) {
+			e.getPuesto().liberoPuesto(e);
+		}
 		this.empleados.add((EmpleadoNoJerarquico) e);
 		e.setPuesto(this);
 		return true;
+	}
+
+	public void liberoPuesto(Empleado e) {
+		this.empleados.remove(e);
+		e.setPuesto(null);
 	}
 
 	@Override

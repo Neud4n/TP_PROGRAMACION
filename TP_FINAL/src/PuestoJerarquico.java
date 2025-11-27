@@ -20,6 +20,12 @@ public class PuestoJerarquico extends Puesto {
 	}
 
 	@Override
+	public void liberoPuesto(Empleado e) {
+		this.empleado = null;
+		e.setPuesto(null);
+	}
+
+	@Override
 	public boolean tomarEmpleado(Empleado e) {
 		if (!e.sosJerarquico()) {
 			System.out.println("El empleado no es jerárquico.");
@@ -39,6 +45,9 @@ public class PuestoJerarquico extends Puesto {
 		if (!e.validacionAntiguedadCargo() && e.getPuesto() != null) {
 			System.out.println("El empleado no cumple con la antiguedad mínima requerida en su cargo actual.");
 			return false;
+		}
+		if (e.getPuesto() != null) {
+			e.getPuesto().liberoPuesto(e);
 		}
 		this.empleado = (EmpleadoJerarquico) e;
 		this.empleado.setPuesto(this);

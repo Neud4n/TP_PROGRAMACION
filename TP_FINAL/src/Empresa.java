@@ -757,10 +757,29 @@ public class Empresa {
                 System.out.println(">>Empleado eliminado del sistema correctamente");
             }
         } while (this.salir());
-        // Completar. -tizi
     }
 
     public void bajaConocimiento() {
-        // Completar -- -tizi
+        String conocimiento;
+        do {
+            System.out.println("Ingrese el nombre del conocimiento");
+            conocimiento = input.nextLine();
+            Conocimiento c = this.getConocimiento(conocimiento.toUpperCase());
+            if (c == null) {
+                System.out.println("El conocimiento no existe");
+            } else {
+
+                for (Puesto p : this.puestos) {
+                    p.eliminarConocimiento(c);
+                }
+
+                for (Empleado e : this.empleados) {
+                    e.eliminarConocimiento(c);
+                }
+
+                this.conocimientos.remove(c);
+                System.out.println(">>Conocimiento eliminado del sistema correctamente");
+            }
+        } while (this.salir());
     }
 }

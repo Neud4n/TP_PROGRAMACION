@@ -48,4 +48,11 @@ public abstract class Puesto {
 	public abstract boolean tomarEmpleado(Empleado e);
 
 	public abstract void eliminarEmpleado(int dni);
+
+	public void eliminarConocimiento(Conocimiento c) {
+		if (this.requerimientos.containsKey(c)) {
+			this.requerimientos.remove(c);
+		}
+	}
+
 }

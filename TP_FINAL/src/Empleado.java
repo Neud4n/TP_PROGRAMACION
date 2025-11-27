@@ -56,4 +56,9 @@ public abstract class Empleado {
 
 	public abstract void imprimirDatos();
 
+	public void eliminarConocimiento(Conocimiento c) {
+		if (this.skills.containsKey(c)) {
+			this.skills.remove(c);
+		}
+	}
 }

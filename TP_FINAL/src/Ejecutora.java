@@ -92,6 +92,9 @@ public class Ejecutora {
 				case 4:
 					e.agregarSkillEmpleado();
 					break;
+				case 5:
+					e.bajaEmpleado();
+					break;
 				case 0:
 					System.out.println("Volviendo al menú principal...");
 					break;
@@ -180,7 +183,7 @@ public class Ejecutora {
 					e.mostrarConocimientos();
 					break;
 				case 3:
-					// e.bajaConocimiento();
+					e.bajaConocimiento();
 					break;
 				case 0:
 					System.out.println("Volviendo al menú principal...");

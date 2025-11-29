@@ -38,6 +38,7 @@ public class Empresa {
         Conocimiento javascript = new Conocimiento("JAVASCRIPT");
         Conocimiento css = new Conocimiento("CSS");
         Conocimiento linux = new Conocimiento("LINUX");
+
         this.conocimientos.add(gcp);
         this.conocimientos.add(terraform);
         this.conocimientos.add(devops);
@@ -734,9 +735,53 @@ public class Empresa {
      * }
      */
 
-    public void bajaPuesto() {
-        // Completar. -aye la mas linda
-    }
+    /*
+     * public void bajaPuesto() {
+     * 
+     * String descripcion;
+     * Puesto puestoPorBorrar = null;
+     * boolean ocupado = false;
+     * 
+     * if(puestos.isEmpty()){
+     * System.out.println("No se encontro ningun puesto");
+     * return;
+     * }
+     * 
+     * do{
+     * System.out.println("Ingrese la descipccion del puesto: ");
+     * descripcion = input.nextLine();
+     * puestoPorBorrar = this.getPuesto(descripcion);
+     * 
+     * i(puestoPorBorrar==null){
+     * System.out.println("No se encontro ningun puesto con esa descripcion");
+     * }
+     * }while(puestoPorBorrar==null);
+     * 
+     * if(puestoPorBorrar.sosJerarquico()){
+     * PuestoJerarquico p = (PuestoJerarquico) puestoPorBorrar;
+     * if(p.Empleado != null){
+     * p.Empleado.setPuesto(null);
+     * p.liberoPuesto(p.Empleado);
+     * }
+     * }else{
+     * PuestoNoJerarquico pn = (PuestoNoJerarquico) puestoPorBorrar;
+     * if(!pn.empleados.isEmpty()){
+     * for(EmpleadoNoJerarquico e: pn.empleados){
+     * e.setPuesto(null);
+     * }
+     * }
+     * 
+     * for(int i=0; i<this.convocatorias.size(); i++){
+     * Convocatoria c = this.convocatorias.get(i);
+     * if(c.puestoConvocatoria.equals(puestoPorBorrar)){
+     * this.convocatorias.remove(i);
+     * i--;
+     * }
+     * }
+     * }
+     * 
+     * }
+     */
 
     public void bajaConvocatoria() {
         // Completar. - vale

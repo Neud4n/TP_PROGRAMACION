@@ -61,4 +61,8 @@ public abstract class Empleado {
 			this.skills.remove(c);
 		}
 	}
+
+	public void agregarConocimiento(Conocimiento c, Integer experiencia) {
+		this.skills.put(c, experiencia);
+	}
 }

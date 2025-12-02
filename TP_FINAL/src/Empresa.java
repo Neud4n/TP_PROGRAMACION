@@ -792,12 +792,17 @@ public class Empresa {
     }
 
     // Caso de uso x: Agregar requerimiento a un puesto.
-    public void agregarRequisitoPuesto() {
+    public void agregarRequisitoPuesto() { // Aye
         // Completar.
     }
 
     // Caso de uso y: Baja de requisito de un puesto.
-    public void bajaRequisitoPuesto() {
+    public void bajaRequisitoPuesto() { // Tizi
+        // Completar.
+    }
+
+    // Caso de uso z: Agregar conocimiento a un empleado.
+    public void agregarConocimientoEmpleado() { // Tizi
         // Completar.
     }
 }

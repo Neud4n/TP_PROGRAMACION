@@ -135,15 +135,8 @@ public class Convocatoria {
 	}
 
 	public void eliminarAspirante(int dni) {
-		if (this.aspirantes != null) {
-			for (Empleado a : aspirantes) {
-				if (a.getDni() == dni) {
-					this.aspirantes.remove(a);
-					break;
-				}
-			}
+		if (!this.aspirantes.isEmpty()) {
+			this.aspirantes.removeIf(e -> e.getDni() == dni);
 		}
-		this.vacantes++;
 	}
-
 }

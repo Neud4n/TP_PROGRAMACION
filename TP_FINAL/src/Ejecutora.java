@@ -113,7 +113,7 @@ public class Ejecutora {
 			input.nextLine();
 			switch (opcion) {
 				case 1:
-					// e.altaPuesto();
+					e.altaPuesto();
 					break;
 				case 2:
 					e.mostrarPuesto();

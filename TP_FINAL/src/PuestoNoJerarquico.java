@@ -68,4 +68,12 @@ public class PuestoNoJerarquico extends Puesto {
 			}
 		}
 	}
+
+	@Override
+	public void eliminarEmpleados() {
+		for (Empleado e : empleados) {
+			e.setPuesto(null);
+		}
+		this.empleados.clear();
+	}
 }

@@ -55,4 +55,5 @@ public abstract class Puesto {
 		}
 	}
 
+	public abstract void eliminarEmpleados();
 }

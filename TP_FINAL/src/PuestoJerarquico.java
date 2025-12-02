@@ -79,4 +79,9 @@ public class PuestoJerarquico extends Puesto {
 		}
 	}
 
+	@Override
+	public void eliminarEmpleados() {
+		this.liberoPuesto(this.empleado);
+	}
+
 }

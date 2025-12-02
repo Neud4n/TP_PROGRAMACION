@@ -585,100 +585,71 @@ public class Empresa {
             return;
         }
 
+        // Ingreso de descripción del puesto
         do {
-            // Ingreso de descripción del puesto
-            do {
-                System.out.println("Ingrese la descripcion del puesto: ");
-                descripcion = input.nextLine();
-                aux = this.getPuesto(descripcion);
+            System.out.println("Ingrese la descripcion del puesto: ");
+            descripcion = input.nextLine();
+            aux = this.getPuesto(descripcion);
 
-                if (aux != null) {
-                    System.out.println("El puesto ya existe");
-                }
-
-            } while (aux != null);
-
-            // Ingreso de tipo de puesto
-            do {
-                System.out.println("Ingrese el tipo de puesto: ");
-                System.out.println("Puesto nro 1: Jerarquico");
-                System.out.println("Puesto nro 2: No Jerarquico");
-                if (input.hasNextInt()) {
-                    respuesta = input.nextInt();
-                    input.nextLine();
-                } else {
-                    input.nextLine();
-                    respuesta = 0;
-                }
-
-                if (respuesta != 1 && respuesta != 2) {
-                    System.out.println("La respuesta es incorrecta. Ingrese una opcion correcta(1 o 2)");
-                }
-            } while (respuesta != 1 && respuesta != 2);
-
-            Hashtable<Conocimiento, Integer> requerimientos = new Hashtable<>();
-            Integer experienciaNecesaria = 0;
-            String nombreConocimiento;
-
-            // Ingreso de requerimientos
-            do {
-                System.out.println("Describa el conocimiento:");
-
-                nombreConocimiento = input.nextLine();
-                Conocimiento key = this.getConocimiento(nombreConocimiento.toUpperCase());
-
-                if (key == null) {
-                    System.out.println("El conocimiento ingresado no existe");
-                } else if (!requerimientos.containsKey(key)) {
-                    do {
-                        System.out.println("Ingrese los años de experiencia:");
-
-                        if (input.hasNextInt()) {
-                            experienciaNecesaria = input.nextInt();
-                            input.nextLine();
-                        } else {
-                            input.nextLine();
-                            experienciaNecesaria = 0;
-                        }
-
-                        if (experienciaNecesaria <= 0) {
-                            System.out.println("Debe ser un numero positivo");
-                        }
-                    } while (experienciaNecesaria <= 0);
-
-                    requerimientos.put(key, experienciaNecesaria);
-                    System.out.println("Requisito agregado correctamente");
-
-                } else {
-                    System.out.println("El requisito ya se agrego anteriormente");
-                }
-
-                System.out.println("¿Desea agregar otro requerimiento? (1=si/0=no)");
-            } while (this.salir());
-
-            // Creación del puesto
-            Puesto nuevoPuesto = null;
-
-            switch (respuesta) {
-                case 1:
-                    nuevoPuesto = new PuestoJerarquico(descripcion, requerimientos);
-                    break;
-                case 2:
-                    nuevoPuesto = new PuestoNoJerarquico(descripcion, requerimientos);
-                    break;
-                default:
-                    break;
+            if (aux != null) {
+                System.out.println("El puesto ya existe");
             }
 
-            if (nuevoPuesto != null) {
-                this.puestos.add(nuevoPuesto);
-                System.out.println("Puesto agregado: " + descripcion);
+        } while (aux != null);
+
+        // Ingreso de tipo de puesto
+        do {
+            System.out.println("Ingrese el tipo de puesto: ");
+            System.out.println("Puesto nro 1: Jerarquico");
+            System.out.println("Puesto nro 2: No Jerarquico");
+            respuesta = input.nextInt();
+            input.nextLine();
+
+            if (respuesta != 1 && respuesta != 2) {
+                System.out.println("La respuesta es incorrecta. Ingrese una opcion correcta (1 o 2)");
+            }
+
+        } while (respuesta != 1 && respuesta != 2);
+
+        Hashtable<Conocimiento, Integer> requerimientos = new Hashtable<>();
+        Integer experienciaNecesaria = 0;
+        String nombreConocimiento;
+        System.out.println("Ingrese los requerimientos para el puesto");
+        // Ingreso de requerimientos
+        do {
+            System.out.print("Conocimiento: ");
+            nombreConocimiento = input.nextLine();
+            Conocimiento key = this.getConocimiento(nombreConocimiento.toUpperCase());
+
+            if (key != null) {
+
+                do {
+                    System.out.print("Ingrese los años de experiencia: ");
+                    experienciaNecesaria = input.nextInt();
+                    input.nextLine();
+                    if (experienciaNecesaria <= 0) {
+                        System.out.println("Debe ser un numero positivo");
+                    }
+
+                } while (experienciaNecesaria <= 0);
+
+                requerimientos.put(key, experienciaNecesaria);
+                System.out.println("Requisito agregado correctamente");
             } else {
-                System.out.println("Error al agregar el puesto");
+                System.out.println("El conocimiento ingresado no existe");
             }
-
-            System.out.println("¿Desea agregar otro puesto?");
         } while (this.salir());
+
+        switch (respuesta) {
+            case 1:
+                this.puestos.add(new PuestoJerarquico(descripcion, requerimientos));
+                break;
+            case 2:
+                this.puestos.add(new PuestoNoJerarquico(descripcion, requerimientos));
+                break;
+            default:
+                break;
+        }
 
         System.out.println(">> Alta de puesto finalizada!");
     }
@@ -739,7 +710,6 @@ public class Empresa {
 
         String descripcion;
         Puesto puestoPorBorrar = null;
-        boolean ocupado = false;
 
         if (puestos.isEmpty()) {
             System.out.println("No se encontro ningun puesto");
@@ -756,24 +726,9 @@ public class Empresa {
             }
         } while (puestoPorBorrar == null);
 
-        for (Empleado e : this.empleados) {
-            if (e.getPuesto() != null && e.getPuesto().comparoDescripcion(puestoPorBorrar.getDescripcion())) {
-                ocupado = true;
-                break;
-            }
-        }
-
-        if (ocupado) {
-            System.out.println("No es posible eliminar el puesto si contiene empleados");
-            return;
-        }
-
-        for (Convocatoria c : this.convocatorias) {
-            if (c.getEstado() && c.getPuestoConvocatoria().comparoDescripcion(puestoPorBorrar.getDescripcion())) {
-                System.out.println("Error. el puesto ya esta asociado a una convocatoria");
-                return;
-            }
-        }
+        // Todos los empleados que tengan asignado el puesto a eliminar.
+        // Deberían quedar desasignados.
+        puestoPorBorrar.eliminarEmpleados();
 
         this.puestos.remove(puestoPorBorrar);
         System.out.println("El puesto: " + puestoPorBorrar.getDescripcion() + " se dio de baja correctamente.");
@@ -834,5 +789,15 @@ public class Empresa {
                 System.out.println(">>Conocimiento eliminado del sistema correctamente");
             }
         } while (this.salir());
+    }
+
+    // Caso de uso x: Agregar requerimiento a un puesto.
+    public void agregarRequisitoPuesto() {
+        // Completar.
+    }
+
+    // Caso de uso y: Baja de requisito de un puesto.
+    public void bajaRequisitoPuesto() {
+        // Completar.
     }
 }

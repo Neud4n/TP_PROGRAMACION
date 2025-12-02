@@ -26,7 +26,9 @@ public class Ejecutora {
 		System.out.println("   1. Alta Puesto"); // Pendiente
 		System.out.println("   2. Mostrar Puesto"); // Hecho
 		System.out.println("   3. Mostrar Puestos"); // Hecho
-		System.out.println("   4. Baja Puesto"); // Pendiente
+		System.out.println("   4. Agregar requerimiento"); // Pendiente
+		System.out.println("   5. Baja requerimiento"); // Pendiente
+		System.out.println("   6. Baja Puesto"); // Hecho
 		System.out.println("   0. Volver al menú principal");
 		System.out.println("========================================");
 		System.out.print("Ingrese una opción: ");
@@ -120,6 +122,15 @@ public class Ejecutora {
 					break;
 				case 3:
 					e.mostrarPuestos();
+					break;
+				case 4:
+					e.agregarRequisitoPuesto();
+					break;
+				case 5:
+					e.bajaRequisitoPuesto();
+					break;
+				case 6:
+					e.bajaPuesto();
 					break;
 				case 0:
 					System.out.println("Volviendo al menú principal...");

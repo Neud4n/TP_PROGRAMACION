@@ -29,6 +29,10 @@ public class Convocatoria {
 		return this.estadoConvocatoria;
 	}
 
+	public Puesto getPuestoConvocatoria() {
+		return this.puestoConvotaria;
+	}
+
 	private boolean hayVacantes() {
 		return this.vacantes > 0;
 	}

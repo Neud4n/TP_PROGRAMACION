@@ -769,7 +769,7 @@ public class Empresa {
         }
 
         for (Convocatoria c : this.convocatorias) {
-            if (c.getEstado() && c.puestoConvotaria.comparoDescripcion(puestoPorBorrar.getDescripcion())) {
+            if (c.getEstado() && c.getPuestoConvocatoria().comparoDescripcion(puestoPorBorrar.getDescripcion())) {
                 System.out.println("Error. el puesto ya esta asociado a una convocatoria");
                 return;
             }

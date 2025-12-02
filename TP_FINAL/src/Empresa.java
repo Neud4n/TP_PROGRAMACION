@@ -735,53 +735,49 @@ public class Empresa {
      * }
      */
 
-    /*
-     * public void bajaPuesto() {
-     * 
-     * String descripcion;
-     * Puesto puestoPorBorrar = null;
-     * boolean ocupado = false;
-     * 
-     * if(puestos.isEmpty()){
-     * System.out.println("No se encontro ningun puesto");
-     * return;
-     * }
-     * 
-     * do{
-     * System.out.println("Ingrese la descipccion del puesto: ");
-     * descripcion = input.nextLine();
-     * puestoPorBorrar = this.getPuesto(descripcion);
-     * 
-     * i(puestoPorBorrar==null){
-     * System.out.println("No se encontro ningun puesto con esa descripcion");
-     * }
-     * }while(puestoPorBorrar==null);
-     * 
-     * if(puestoPorBorrar.sosJerarquico()){
-     * PuestoJerarquico p = (PuestoJerarquico) puestoPorBorrar;
-     * if(p.Empleado != null){
-     * p.Empleado.setPuesto(null);
-     * p.liberoPuesto(p.Empleado);
-     * }
-     * }else{
-     * PuestoNoJerarquico pn = (PuestoNoJerarquico) puestoPorBorrar;
-     * if(!pn.empleados.isEmpty()){
-     * for(EmpleadoNoJerarquico e: pn.empleados){
-     * e.setPuesto(null);
-     * }
-     * }
-     * 
-     * for(int i=0; i<this.convocatorias.size(); i++){
-     * Convocatoria c = this.convocatorias.get(i);
-     * if(c.puestoConvocatoria.equals(puestoPorBorrar)){
-     * this.convocatorias.remove(i);
-     * i--;
-     * }
-     * }
-     * }
-     * 
-     * }
-     */
+    public void bajaPuesto() {
+
+        String descripcion;
+        Puesto puestoPorBorrar = null;
+        boolean ocupado = false;
+
+        if (puestos.isEmpty()) {
+            System.out.println("No se encontro ningun puesto");
+            return;
+        }
+
+        do {
+            System.out.println("Ingrese la descripcion del puesto: ");
+            descripcion = input.nextLine();
+            puestoPorBorrar = this.getPuesto(descripcion);
+
+            if (puestoPorBorrar == null) {
+                System.out.println("No se encontro ningun puesto con esa descripcion");
+            }
+        } while (puestoPorBorrar == null);
+
+        for (Empleado e : this.empleados) {
+            if (e.getPuesto() != null && e.getPuesto().comparoDescripcion(puestoPorBorrar.getDescripcion())) {
+                ocupado = true;
+                break;
+            }
+        }
+
+        if (ocupado) {
+            System.out.println("No es posible eliminar el puesto si contiene empleados");
+            return;
+        }
+
+        for (Convocatoria c : this.convocatorias) {
+            if (c.getEstado() && c.puestoConvotaria.comparoDescripcion(puestoPorBorrar.getDescripcion())) {
+                System.out.println("Error. el puesto ya esta asociado a una convocatoria");
+                return;
+            }
+        }
+
+        this.puestos.remove(puestoPorBorrar);
+        System.out.println("El puesto: " + puestoPorBorrar.getDescripcion() + " se dio de baja correctamente.");
+    }
 
     public void bajaConvocatoria() {
         // Completar. - vale

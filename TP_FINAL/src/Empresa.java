@@ -653,7 +653,8 @@ public class Empresa {
 
         System.out.println(">> Alta de puesto finalizada!");
     }
-public void altaConvocatoria() {
+
+    public void altaConvocatoria() {
         System.out.println("========================================");
         System.out.println("          NUEVA CONVOCATORIA            ");
         System.out.println("========================================");
@@ -662,11 +663,12 @@ public void altaConvocatoria() {
         do {
             System.out.print("Ingrese la cantidad de vacantes: ");
             vacantes = input.nextInt();
-            if (vacantes <= 0) System.out.println(">> Error: Debe haber al menos una vacante.");
+            if (vacantes <= 0)
+                System.out.println(">> Error: Debe haber al menos una vacante.");
         } while (vacantes <= 0);
         input.nextLine();
 
-        //revisar manejo de fechas
+        // revisar manejo de fechas
         LocalDate inicio = null;
         boolean fechaValida = false;
         while (!fechaValida) {
@@ -682,21 +684,21 @@ public void altaConvocatoria() {
 
         System.out.print("Ingrese la descripción del puesto para la convocatoria: ");
         String descripcionPuesto = input.nextLine();
-        
+
         Puesto puesto = this.getPuesto(descripcionPuesto);
 
         if (puesto == null) {
             System.out.println(">> El puesto no existe. ¿Desea crearlo ahora? (S/N)");
             String resp = input.nextLine();
-            
+
             if (resp.equalsIgnoreCase("S")) {
-                //llamar "altaPuesto"?
+                // llamar "altaPuesto"?
                 System.out.println("¿Es un puesto jerárquico? (1: Si | 2: No)");
                 int tipo = input.nextInt();
-                input.nextLine(); 
-                
+                input.nextLine();
+
                 Hashtable<Conocimiento, Integer> requerimientos = new Hashtable<>();
-                
+
                 if (tipo == 1) {
                     puesto = new PuestoJerarquico(descripcionPuesto, requerimientos);
                 } else {
@@ -714,7 +716,7 @@ public void altaConvocatoria() {
 
         Convocatoria nueva = new Convocatoria(vacantes, inicio, puesto);
         this.convocatorias.add(nueva);
-        System.out.println(">> Convocatoria creada con ID " + nueva.getId()); 
+        System.out.println(">> Convocatoria creada con ID " + nueva.getId());
     }
 
     public void bajaPuesto() {
@@ -749,19 +751,19 @@ public void altaConvocatoria() {
         int id;
         Convocatoria convocatoriaPorBorrar = null;
 
-        if (convocatorias.isEmpty()){
+        if (convocatorias.isEmpty()) {
             System.out.println("No se encontro ninguna convocatoria");
             return;
         }
-        do{
+        do {
             System.out.println("Ingrese el ID de la convocatoria: ");
-            id= input.nextInt();
+            id = input.nextInt();
             input.nextLine();
             convocatoriaPorBorrar = this.getConvocatoria(id);
-            if (convocatoriaPorBorrar == null){
+            if (convocatoriaPorBorrar == null) {
                 System.out.println("No se encontro ninguna convocatoria con ese ID ");
             }
-        }while (convocatoriaPorBorrar == null);
+        } while (convocatoriaPorBorrar == null);
 
         this.convocatorias.remove(convocatoriaPorBorrar);
         System.out.println("La convocatoria:  " + convocatoriaPorBorrar.getId() + " se elimino correctamente");
@@ -821,8 +823,54 @@ public void altaConvocatoria() {
     }
 
     // Caso de uso x: Agregar requerimiento a un puesto.
-    public void agregarRequisitoPuesto() { // Aye
-        // Completar.
+    public void agregarRequisitoPuesto() {
+        String descripcionPuesto;
+        String descripcionConocimiento;
+        int nivelRequerido = 0;
+        Puesto puestoElegido = null;
+        Conocimiento conocimientoElegido = null;
+
+        if (this.puestos.isEmpty()) {
+            System.out.println("No se registro ningun puesto.");
+            return;
+        }
+        do {
+            System.out.println("Ingrese la descripcion del puesto: ");
+            descripcionPuesto = input.nextLine();
+            puestoElegido = this.getPuesto(descripcionPuesto);
+
+            if (puestoElegido == null) {
+                System.out.println("El puesto no existe");
+            }
+
+        } while (puestoElegido == null);
+
+        if (this.conocimientos.isEmpty()) {
+            System.out.println("No hay conocimientos registrados");
+            return;
+        }
+
+        do {
+            System.out.println("ingrese la descripcion del conocimiento: ");
+            descripcionConocimiento = input.nextLine();
+            conocimientoElegido = this.getConocimiento(descripcionConocimiento);
+
+            if (conocimientoElegido == null) {
+                System.out.println("El conocimiento no existe");
+            }
+        } while (conocimientoElegido == null);
+
+        do {
+            System.out.println("Ingrese el nivel para ese conocimiento (1-5): ");
+            nivelRequerido = input.nextInt();
+            input.nextLine();
+
+            if (nivelRequerido < 1 || nivelRequerido > 5) {
+                System.out.println("Error. el nivel debe estar entre el 1 y el 5");
+            }
+        } while (nivelRequerido < 1 || nivelRequerido > 5);
+
+        puestoElegido.getRequerimientos().put(conocimientoElegido, nivelRequerido);
     }
 
     // Caso de uso y: Baja de requisito de un puesto.

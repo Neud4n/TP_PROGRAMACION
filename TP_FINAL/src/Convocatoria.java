@@ -25,6 +25,10 @@ public class Convocatoria {
 		return this.ID == id;
 	}
 
+	public int getId() {
+		return this.ID;
+	}
+
 	public boolean getEstado() {
 		return this.estadoConvocatoria;
 	}

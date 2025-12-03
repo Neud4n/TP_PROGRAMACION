@@ -653,58 +653,69 @@ public class Empresa {
 
         System.out.println(">> Alta de puesto finalizada!");
     }
+public void altaConvocatoria() {
+        System.out.println("========================================");
+        System.out.println("          NUEVA CONVOCATORIA            ");
+        System.out.println("========================================");
 
-    // Caso de uso 3: Crear convocatoria
-    /*
-     * public void altaConvocatoria() {
-     * int vacantes;
-     * LocalDate inicio;
-     * LocalDate fin;
-     * //Puesto puesto;
-     * String descripcion;
-     * 
-     * 
-     * System.out.println("Ingrse los datos de la convocatoria: ");
-     * System.out.println("Ingrese la cantidad de vancantes; ");
-     * vacantes=input.nextInt();
-     * System.out.println("Ingrese la fecha de inicio;");
-     * inicio=input.next();
-     * System.out.println("Ingrese la fecha de finalicación: ");
-     * fin = input.next();
-     * 
-     * Hashtable<Conocimiento, Integer> requerimientos = new Hashtable<>();
-     * 
-     * System.out.println("Ingrese la descripción del puesto: ");
-     * descripcion=input.next();
-     * 
-     * System.out.print("¿Desea agregar conocimientos requeridos? (s/n): ");
-     * String respuesta = input.nextLine();
-     * 
-     * while (respuesta.equalsIgnoreCase("s")) {
-     * 
-     * System.out.print("Ingrese el nombre del conocimiento: ");
-     * String nombreCon = input.nextLine();
-     * 
-     * System.out.print("Ingrese el nivel requerido (años de experiencia): ");
-     * int nivel = input.nextInt();
-     * 
-     * Conocimiento c = new Conocimiento(nombreCon);
-     * 
-     * requerimientos.put(c, nivel);
-     * 
-     * System.out.print("¿Desea agregar otro conocimiento? (s/n): ");
-     * respuesta = input.nextLine();
-     * }
-     * 
-     * Puesto nuevoPuesto = new PuestoNoJerarquico(descripcionPuesto,
-     * requerimientos);
-     * Convocatoria nueva = new Convocatoria(vacantes, inicio, nuevoPuesto);
-     * 
-     * convocatorias.add(nueva);
-     * System.out.println("Convocatoria creada exitosamente.");
-     * 
-     * }
-     */
+        int vacantes;
+        do {
+            System.out.print("Ingrese la cantidad de vacantes: ");
+            vacantes = input.nextInt();
+            if (vacantes <= 0) System.out.println(">> Error: Debe haber al menos una vacante.");
+        } while (vacantes <= 0);
+        input.nextLine();
+
+        //revisar manejo de fechas
+        LocalDate inicio = null;
+        boolean fechaValida = false;
+        while (!fechaValida) {
+            try {
+                System.out.print("Ingrese la fecha de inicio (AAAA-MM-DD): ");
+                String fechaStr = input.nextLine();
+                inicio = LocalDate.parse(fechaStr);
+                fechaValida = true;
+            } catch (Exception e) {
+                System.out.println(">> Error: Formato de fecha inválido. Use AAAA-MM-DD (ej: 2024-01-01).");
+            }
+        }
+
+        System.out.print("Ingrese la descripción del puesto para la convocatoria: ");
+        String descripcionPuesto = input.nextLine();
+        
+        Puesto puesto = this.getPuesto(descripcionPuesto);
+
+        if (puesto == null) {
+            System.out.println(">> El puesto no existe. ¿Desea crearlo ahora? (S/N)");
+            String resp = input.nextLine();
+            
+            if (resp.equalsIgnoreCase("S")) {
+                //llamar "altaPuesto"?
+                System.out.println("¿Es un puesto jerárquico? (1: Si | 2: No)");
+                int tipo = input.nextInt();
+                input.nextLine(); 
+                
+                Hashtable<Conocimiento, Integer> requerimientos = new Hashtable<>();
+                
+                if (tipo == 1) {
+                    puesto = new PuestoJerarquico(descripcionPuesto, requerimientos);
+                } else {
+                    puesto = new PuestoNoJerarquico(descripcionPuesto, requerimientos);
+                }
+                this.puestos.add(puesto);
+                System.out.println(">> Puesto creado y agregado al sistema.");
+            } else {
+                System.out.println(">> Cancelando operación.");
+                return;
+            }
+        } else {
+            System.out.println(">> Puesto seleccionado: " + puesto.getDescripcion());
+        }
+
+        Convocatoria nueva = new Convocatoria(vacantes, inicio, puesto);
+        this.convocatorias.add(nueva);
+        System.out.println(">> Convocatoria creada con ID " + nueva.getId()); 
+    }
 
     public void bajaPuesto() {
 
@@ -735,7 +746,25 @@ public class Empresa {
     }
 
     public void bajaConvocatoria() {
-        // Completar. - vale
+        int id;
+        Convocatoria convocatoriaPorBorrar = null;
+
+        if (convocatorias.isEmpty()){
+            System.out.println("No se encontro ninguna convocatoria");
+            return;
+        }
+        do{
+            System.out.println("Ingrese el ID de la convocatoria: ");
+            id= input.nextInt();
+            input.nextLine();
+            convocatoriaPorBorrar = this.getConvocatoria(id);
+            if (convocatoriaPorBorrar == null){
+                System.out.println("No se encontro ninguna convocatoria con ese ID ");
+            }
+        }while (convocatoriaPorBorrar == null);
+
+        this.convocatorias.remove(convocatoriaPorBorrar);
+        System.out.println("La convocatoria:  " + convocatoriaPorBorrar.getId() + " se elimino correctamente");
     }
 
     public void bajaEmpleado() {

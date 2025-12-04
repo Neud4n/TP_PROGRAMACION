@@ -834,7 +834,6 @@ public class Empresa {
         do {
             System.out.println("Ingrese el DNI del empleado: ");
             int dni = input.nextInt();
-            input.nextInt();
             empleadoElegido = this.getEmpleado(dni);
             if (empleadoElegido == null) {
                 System.out.println("El empleado no existe");
@@ -846,10 +845,11 @@ public class Empresa {
             System.out.println("No hay conocimientos registrados");
             return;
         }
+        input.nextLine();
         do {
             System.out.println("Ingrese la descripcion del conocimiento:");
             descripcionConocimiento = input.nextLine();
-            conocimientoElegido = this.getConocimiento(descripcionConocimiento);
+            conocimientoElegido = this.getConocimiento(descripcionConocimiento.toUpperCase());
             if (conocimientoElegido == null) {
                 System.out.println("El conocimiento no existe");
                 return;
@@ -880,14 +880,13 @@ public class Empresa {
         do {
             System.out.println("Ingrese el DNI del empleado: ");
             int dni = input.nextInt();
-            input.nextInt();
             empleadoElegido = this.getEmpleado(dni);
             if (empleadoElegido == null) {
                 System.out.println("El empleado no existe");
                 return;
             }
         } while (empleadoElegido == null);
-
+        input.nextLine();
         if (this.conocimientos.isEmpty()) {
             System.out.println("No hay conocimientos registrados");
             return;
@@ -895,12 +894,13 @@ public class Empresa {
         do {
             System.out.println("Ingrese la descripcion del conocimiento:");
             descripcionConocimiento = input.nextLine();
-            conocimientoElegido = this.getConocimiento(descripcionConocimiento);
+            conocimientoElegido = this.getConocimiento(descripcionConocimiento.toUpperCase());
             if (conocimientoElegido == null) {
                 System.out.println("El conocimiento no existe");
                 return;
             }
         } while (conocimientoElegido == null);
         empleadoElegido.eliminarConocimiento(conocimientoElegido);
+        System.out.println(" >> El conocimiento se ha eliminado correctamente");
     }
 }

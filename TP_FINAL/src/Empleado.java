@@ -59,10 +59,16 @@ public abstract class Empleado {
 	public void eliminarConocimiento(Conocimiento c) {
 		if (this.skills.containsKey(c)) {
 			this.skills.remove(c);
+		} else {
+			System.out.println("El empleado no tiene el conocimiento que desea eliminar");
 		}
 	}
 
 	public void agregarConocimiento(Conocimiento c, Integer experiencia) {
-		this.skills.put(c, experiencia);
+		if (this.skills.containsKey(c)) {
+			System.out.println("El empleado ya tiene el conocimiento que desea agregar");
+		} else {
+			this.skills.put(c, experiencia);
+		}
 	}
 }

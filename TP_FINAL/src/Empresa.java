@@ -861,25 +861,131 @@ public class Empresa {
         } while (conocimientoElegido == null);
 
         do {
-            System.out.println("Ingrese el nivel para ese conocimiento (1-5): ");
+            System.out.println("Ingrese los años de experiencia requeridos: ");
             nivelRequerido = input.nextInt();
             input.nextLine();
 
-            if (nivelRequerido < 1 || nivelRequerido > 5) {
-                System.out.println("Error. el nivel debe estar entre el 1 y el 5");
+            if (nivelRequerido < 1) {
+                System.out.println("Error. debe ser mayor a 0");
             }
-        } while (nivelRequerido < 1 || nivelRequerido > 5);
+        } while (nivelRequerido < 1);
 
-        puestoElegido.getRequerimientos().put(conocimientoElegido, nivelRequerido);
+        puestoElegido.agragarConocimiento(conocimientoElegido, nivelRequerido);
     }
 
     // Caso de uso y: Baja de requisito de un puesto.
     public void bajaRequisitoPuesto() { // Tizi
-        // Completar.
+        String descripcionPuesto;
+        Puesto puestoElegido = null;
+        Conocimiento conocimientoElegido = null;
+        String descripcionConocimiento;
+        if (this.puestos.isEmpty()) {
+            System.out.println("No se registro ningun puesto.");
+            return;
+        }
+        do {
+            System.out.println("Ingrese la descripcion del puesto: ");
+            descripcionPuesto = input.nextLine();
+            puestoElegido = this.getPuesto(descripcionPuesto.toUpperCase());
+            if (puestoElegido == null) {
+                System.out.println("El puesto no existe");
+            }
+        } while (puestoElegido == null);
+
+        if (this.conocimientos.isEmpty()) {
+            System.out.println("No se registro ningun conocimiento.");
+            return;
+        }
+        do {
+            System.out.println("Ingrese la descripcion del conocimiento que desea eliminar: ");
+            descripcionConocimiento = input.nextLine();
+            conocimientoElegido = this.getConocimiento(descripcionConocimiento);
+            if (conocimientoElegido == null) {
+                System.out.println("El conocimiento no existe");
+            }
+        } while (conocimientoElegido == null);
+        puestoElegido.eliminarConocimiento(conocimientoElegido);
     }
 
     // Caso de uso z: Agregar conocimiento a un empleado.
     public void agregarConocimientoEmpleado() { // Tizi
-        // Completar.
+        Empleado empleadoElegido = null;
+        Conocimiento conocimientoElegido = null;
+        String descripcionConocimiento;
+        if (this.empleados.isEmpty()) {
+            System.out.println("No se registro ningun empleado.");
+            return;
+        }
+        do {
+            System.out.println("Ingrese el DNI del empleado: ");
+            int dni = input.nextInt();
+            input.nextInt();
+            empleadoElegido = this.getEmpleado(dni);
+            if (empleadoElegido == null) {
+                System.out.println("El empleado no existe");
+                return;
+            }
+        } while (empleadoElegido == null);
+
+        if (this.conocimientos.isEmpty()) {
+            System.out.println("No hay conocimientos registrados");
+            return;
+        }
+        do {
+            System.out.println("Ingrese la descripcion del conocimiento:");
+            descripcionConocimiento = input.nextLine();
+            conocimientoElegido = this.getConocimiento(descripcionConocimiento);
+            if (conocimientoElegido == null) {
+                System.out.println("El conocimiento no existe");
+                return;
+            }
+        } while (conocimientoElegido == null);
+
+        Integer experiencia;
+        do {
+            System.out.println("Ingrese los años de experiencia del empleado en: " + descripcionConocimiento);
+            experiencia = input.nextInt();
+            input.nextLine();
+            if (experiencia < 1) {
+                System.out.println("Error. la experiencia debe ser mayor a 0");
+            }
+        } while (experiencia < 1);
+        empleadoElegido.agregarConocimiento(conocimientoElegido, experiencia);
+    }
+
+    // Caso de uso b: Baja de skill de un empleado.
+    public void bajaSkillEmpleado() {
+        Empleado empleadoElegido = null;
+        Conocimiento conocimientoElegido = null;
+        String descripcionConocimiento;
+        if (this.empleados.isEmpty()) {
+            System.out.println("No se registro ningun empleado.");
+            return;
+        }
+        do {
+            System.out.println("Ingrese el DNI del empleado: ");
+            int dni = input.nextInt();
+            input.nextInt();
+            empleadoElegido = this.getEmpleado(dni);
+            if (empleadoElegido == null) {
+                System.out.println("El empleado no existe");
+                return;
+            }
+        } while (empleadoElegido == null);
+
+        if (this.conocimientos.isEmpty()) {
+            System.out.println("No hay conocimientos registrados");
+            return;
+        }
+        do {
+            System.out.println("Ingrese la descripcion del conocimiento:");
+            descripcionConocimiento = input.nextLine();
+            conocimientoElegido = this.getConocimiento(descripcionConocimiento);
+            if (conocimientoElegido == null) {
+                System.out.println("El conocimiento no existe");
+                return;
+            }
+        } while (conocimientoElegido == null);
+        empleadoElegido.eliminarConocimiento(conocimientoElegido);
     }
 }

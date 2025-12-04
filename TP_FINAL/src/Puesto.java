@@ -52,8 +52,18 @@ public abstract class Puesto {
 	public void eliminarConocimiento(Conocimiento c) {
 		if (this.requerimientos.containsKey(c)) {
 			this.requerimientos.remove(c);
+		} else {
+			System.out.println("El requerimiento ingresado no corresponde a este puesto.");
 		}
 	}
 
 	public abstract void eliminarEmpleados();
+
+	public void agragarConocimiento(Conocimiento c, Integer experiencia) {
+		if (this.requerimientos.containsKey(c)) {
+			System.out.println("El conocimiento ya existe en el puesto.");
+		} else {
+			this.requerimientos.put(c, experiencia);
+		}
+	}
 }

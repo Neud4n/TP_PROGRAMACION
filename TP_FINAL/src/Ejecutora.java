@@ -58,6 +58,7 @@ public class Ejecutora {
 		System.out.println("   5. Agregar aspirante a una convocatoria"); // Hecho
 		System.out.println("   6. Seleccionar aspirante de una convocatoria"); // Hecho
 		System.out.println("   7. Mostrar aspirantes de una convocatoria"); // Hecho
+		System.out.println("   8. Baja Convocatoria"); // Nuevo
 		System.out.println("   0. Volver al menú principal");
 		System.out.println("========================================");
 		System.out.print("Ingrese una opción: ");
@@ -93,7 +94,7 @@ public class Ejecutora {
 					e.mostrarEmpleados();
 					break;
 				case 4:
-					e.agregarSkillEmpleado();
+					e.agregarConocimientoEmpleado();
 					break;
 				case 5:
 					e.bajaSkillEmpleado();
@@ -154,7 +155,7 @@ public class Ejecutora {
 			input.nextLine();
 			switch (opcion) {
 				case 1:
-					// e.altaConvocatoria();
+					e.altaConvocatoria();
 					break;
 				case 2:
 					e.mostrarConvocatoria();
@@ -173,6 +174,9 @@ public class Ejecutora {
 					break;
 				case 7:
 					e.mostrarAspirantes();
+					break;
+				case 8:
+					e.bajaConvocatoria();
 					break;
 				case 0:
 					System.out.println("Volviendo al menú principal...");

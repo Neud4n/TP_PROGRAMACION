@@ -59,7 +59,7 @@ public abstract class Puesto {
 
 	public abstract void eliminarEmpleados();
 
-	public void agragarConocimiento(Conocimiento c, Integer experiencia) {
+	public void agregarConocimiento(Conocimiento c, Integer experiencia) {
 		if (this.requerimientos.containsKey(c)) {
 			System.out.println("El conocimiento ya existe en el puesto.");
 		} else {

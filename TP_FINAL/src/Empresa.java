@@ -261,67 +261,6 @@ public class Empresa {
         System.out.println(">> Alta de conocimiento finalizada!");
     }
 
-    // Caso de uso 5: Agregar conocimiento empleado
-    public void agregarSkillEmpleado() {
-        int dni;
-        String descripcion;
-        Integer experiencia;
-        Conocimiento aux;
-        Empleado e;
-        do {
-            System.out.println("Ingrese el DNI del empleado");
-            dni = input.nextInt();
-            e = this.getEmpleado(dni);
-            if (e == null) {
-                System.out.println("El DNI ingresado no existe.");
-            }
-        } while (e == null);
-        input.nextLine();
-        System.out.println("Ingrese la descripcion del conocimiento");
-        do {
-            descripcion = input.nextLine();
-            aux = this.getConocimiento(descripcion.toUpperCase());
-            if (aux == null) {
-                System.out.println("El conocimiento ingresado no existe en el sistema.");
-            }
-        } while (aux == null);
-        System.out.println("Ingrese los años de experiencia en: " + descripcion);
-        experiencia = input.nextInt();
-        input.nextLine();
-        e.getSkills().put(aux, experiencia);
-        System.out.println(">> Conocimiento agregado/actualizado correctamente!");
-    }
-
-    // Caso de uso 6: Agregar requerimiento puesto
-    public void agregarRequerimientoPuesto() {
-        String descripcionConocimiento;
-        Integer experiencia;
-        Conocimiento aux;
-        String descripcionPuesto;
-        Puesto p;
-        do {
-            System.out.println("Ingrese la descripcion del conocimiento");
-            descripcionConocimiento = input.nextLine();
-            aux = this.getConocimiento(descripcionConocimiento);
-            if (aux == null) {
-                System.out.println("El conocimiento ingresado no existe en el sistema.");
-            }
-        } while (aux == null);
-        System.out.println("Ingrese los años de experiencia en: " + descripcionConocimiento);
-        experiencia = input.nextInt();
-        input.nextLine();
-        do {
-            System.out.println("Ingrese la descripcion del puesto");
-            descripcionPuesto = input.nextLine();
-            p = this.getPuesto(descripcionPuesto);
-            if (p == null) {
-                System.out.println("El puesto ingresado no existe en el sistema.");
-            }
-        } while (p == null);
-        p.getRequerimientos().put(aux, experiencia);
-        System.out.println(">> Requerimiento agregado/actualizado correctamente!");
-    }
-
     // Caso de uso 7: Mostrar puestos jerarquicos y no jerarquicos.
     public void mostrarPuestos() {
         int countJerarquicos = 0;
@@ -647,8 +586,6 @@ public class Empresa {
             case 2:
                 this.puestos.add(new PuestoNoJerarquico(descripcion, requerimientos));
                 break;
-            default:
-                break;
         }
 
         System.out.println(">> Alta de puesto finalizada!");
@@ -688,30 +625,8 @@ public class Empresa {
         Puesto puesto = this.getPuesto(descripcionPuesto);
 
         if (puesto == null) {
-            System.out.println(">> El puesto no existe. ¿Desea crearlo ahora? (S/N)");
-            String resp = input.nextLine();
-
-            if (resp.equalsIgnoreCase("S")) {
-                // llamar "altaPuesto"?
-                System.out.println("¿Es un puesto jerárquico? (1: Si | 2: No)");
-                int tipo = input.nextInt();
-                input.nextLine();
-
-                Hashtable<Conocimiento, Integer> requerimientos = new Hashtable<>();
-
-                if (tipo == 1) {
-                    puesto = new PuestoJerarquico(descripcionPuesto, requerimientos);
-                } else {
-                    puesto = new PuestoNoJerarquico(descripcionPuesto, requerimientos);
-                }
-                this.puestos.add(puesto);
-                System.out.println(">> Puesto creado y agregado al sistema.");
-            } else {
-                System.out.println(">> Cancelando operación.");
-                return;
-            }
-        } else {
-            System.out.println(">> Puesto seleccionado: " + puesto.getDescripcion());
+            System.out.println("El puesto no existe");
+            return;
         }
 
         Convocatoria nueva = new Convocatoria(vacantes, inicio, puesto);
@@ -826,7 +741,7 @@ public class Empresa {
     public void agregarRequisitoPuesto() {
         String descripcionPuesto;
         String descripcionConocimiento;
-        int nivelRequerido = 0;
+        Integer nivelRequerido = 0;
         Puesto puestoElegido = null;
         Conocimiento conocimientoElegido = null;
 
@@ -870,7 +785,7 @@ public class Empresa {
             }
         } while (nivelRequerido < 1);
 
-        puestoElegido.agragarConocimiento(conocimientoElegido, nivelRequerido);
+        puestoElegido.agregarConocimiento(conocimientoElegido, nivelRequerido);
     }
 
     // Caso de uso y: Baja de requisito de un puesto.
